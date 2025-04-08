@@ -11,12 +11,16 @@
 Основная папка, в которой содержатся все скрипты, связанные с выгрузкой и обработкой данных, а также обучением моделей  
 :notebook_with_decorative_cover: [main_folder](main_folder)  
 
+Папка с расположением обработанных данных  
 &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [data](main_folder/data)  
-    
+
+Папка с расположением всех ноутбуков  
 &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [notebooks](main_folder/notebooks)  
-    
+
+Темплейт на случай создания нового ноутбука  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :floppy_disk: [0.1 (WIN) template_data_analysis.ipynb](main_folder/notebooks/0.1_(WIN)_template_data_analysis.ipynb)  
-        
+
+Скрипт по парсингу сайта ЕРЗ  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :mag: [1.1 (WIN) setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_setting_erz_rg.ipynb)  
         
 &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [source](source)  
