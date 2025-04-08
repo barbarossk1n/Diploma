@@ -9,7 +9,7 @@
 
 ## :cookie: Структура проекта
 📁 [main_folder](main_folder)  
-    &nbsp;&nbsp;&nbsp;&nbsp;:ledger: [data](main_folder/data)  
+    &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [data](main_folder/data)  
     :ledger: [notebooks](main_folder/notebooks)  
     :ledger: [source](source)  
 📁 [raw_data](raw_data) 
