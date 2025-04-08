@@ -1,4 +1,4 @@
-# Diploma - RestatEval
+# Диплом - RestatEval
 
 
 ## Оглавление
