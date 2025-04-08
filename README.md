@@ -1,4 +1,6 @@
-# Диплом - RestatEval
+<p align="center">
+  <img src="https://img.shields.io/badge/Дипломный%20проект-RestatEval-ff69b4?style=for-the-badge&logo=github&logoColor=white">
+</p>
 
 ## :cookie: Оглавление
 - [Описание Проекта](#описание-проекта)
