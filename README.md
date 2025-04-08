@@ -8,7 +8,7 @@
 ## :cookie: Описание проекта
 
 ## :cookie: Структура проекта
-📁 [main_folder](main_folder)
+📁 [main_folder](main_folder)  
 📁 [raw_data](raw_data)
 
 ## :cookie: Контакты
