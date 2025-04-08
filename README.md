@@ -9,10 +9,10 @@
 
 ## :cookie: Структура проекта
 📁 [main_folder](main_folder)  
-    :ledger: [data](main_folder/data)
-    :ledger: [notebooks](main_folder/notebooks)
-    :ledger: [source](source)
-📁 [raw_data](raw_data)
+    :ledger: [data](main_folder/data)  
+    :ledger: [notebooks](main_folder/notebooks)  
+    :ledger: [source](source)  
+📁 [raw_data](raw_data) 
 
 ## :cookie: Контакты
 - Инженер данных и машинного обучения – [Леонид](https://github.com/barbarossk1n)
