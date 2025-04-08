@@ -8,11 +8,11 @@
 ## :cookie: Описание проекта
 
 ## :cookie: Структура проекта
-📁 [main_folder](main_folder)  
+:notebook_with_decorative_cover: [main_folder](main_folder)  
     &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [data](main_folder/data)  
     &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [notebooks](main_folder/notebooks)  
     &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [source](source)  
-📁 [raw_data](raw_data) 
+:notebook_with_decorative_cover: [raw_data](raw_data) 
 
 ## :cookie: Контакты
 - Инженер данных и машинного обучения – [Леонид](https://github.com/barbarossk1n)
