@@ -19,7 +19,7 @@
 │   ├── 📁 data                  
 │   ├── 📁 notebooks              
 │   │   ├── 📓 0.1 (WIN) template_data_analysis.ipynb  
-│   │   └── 🔍 1.1 (WIN) setting_erz_rg.ipynb           
+│   │   └── 🔍 1.1 (WIN) parsing_&_setting_erz_rg.ipynb           
 │   └── 📁 source        
 │
 └── 📁 raw_data               
@@ -36,7 +36,7 @@
   * 📁 [notebooks](main_folder/notebooks) — Ноутбуки с анализом и кодом  
 
     - 📓 [0.1 (WIN) template_data_analysis.ipynb](main_folder/notebooks/0.1_(WIN)_template_data_analysis.ipynb) — Шаблон для новых ноутбуков  
-    - 🔍 [1.1 (WIN) setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_setting_erz_rg.ipynb) — Скрипт по парсингу сайта ЕРЗ  
+    - 🔍 [1.1 (WIN) parsing_&_setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_parsing_&_setting_erz_rg.ipynb) — Скрипт по парсингу сайта ЕРЗ  
 
   * 📁 [source](source) — Исходный код и вспомогательные скрипты  
 
