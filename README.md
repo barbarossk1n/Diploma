@@ -9,6 +9,9 @@
 
 ## :cookie: Структура проекта
 📁 [main_folder](main_folder)  
+    :ledger:  
+    :ledger:  
+    :ledger:  
 📁 [raw_data](raw_data)
 
 ## :cookie: Контакты
