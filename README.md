@@ -10,7 +10,7 @@
 
 :notebook_with_decorative_cover: [main_folder](main_folder)  
 
-    &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [data](main_folder/data)  
+   :ledger: [data](main_folder/data)  
     
     &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [notebooks](main_folder/notebooks)  
     
