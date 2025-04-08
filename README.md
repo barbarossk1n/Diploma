@@ -10,8 +10,8 @@
 ## :cookie: Структура проекта
 📁 [main_folder](main_folder)  
     &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [data](main_folder/data)  
-    :ledger: [notebooks](main_folder/notebooks)  
-    :ledger: [source](source)  
+    &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [notebooks](main_folder/notebooks)  
+    &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [source](source)  
 📁 [raw_data](raw_data) 
 
 ## :cookie: Контакты
