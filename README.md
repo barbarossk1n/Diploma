@@ -2,40 +2,50 @@
   <img src="https://img.shields.io/badge/Дипломный%20проект-RestatEval-ff69b4?style=for-the-badge&logo=github&logoColor=white">
 </p>
 
-## :cookie: Оглавление
-- [Описание Проекта](#описание-проекта)
-- [Контакты](#контакты)
+# 🎓 Дипломный проект – RestatEval  
 
-## :cookie: Описание проекта
+## 📖 Оглавление  
+- [📌 Описание проекта](#описание-проекта)  
+- [📂 Структура проекта](#структура-проекта)  
+- [📬 Контакты](#контакты)  
 
-## :cookie: Структура проекта  
+## 📌 Описание проекта  
 
-Основная папка, в которой содержатся все скрипты, связанные с выгрузкой и обработкой данных, а также обучением моделей  
-:notebook_with_decorative_cover: [main_folder](main_folder)  
+## 📂 Структура проекта  
 
-Папка с расположением обработанных данных  
-&nbsp;&nbsp;&nbsp;&nbsp; :ledger: [data](main_folder/data)  
+📁 RestatEval
+├── 📁 main_folder
+│   ├── 📁 data                   # Обработанные данные  
+│   ├── 📁 notebooks              # Ноутбуки с кодом и анализом  
+│   │   ├── 📓 0.1 (WIN) template_data_analysis.ipynb   # Шаблон для новых ноутбуков  
+│   │   └── 🔍 1.1 (WIN) setting_erz_rg.ipynb           # Скрипт по парсингу сайта ЕРЗ  
+│   └── 📁 source                 # Исходный код и вспомогательные скрипты  
+│
+└── 📁 raw_data                   # Исходные (сырые) данные  
+    ├── 🛢️ csv                    # Данные в формате CSV  
+    ├── 🛢️ excel                  # Данные в формате Excel  
+    └── 🛢️ json                   # Данные в формате JSON  
 
-&nbsp;&nbsp;&nbsp;&nbsp; Папка с расположением всех ноутбуков  
-&nbsp;&nbsp;&nbsp;&nbsp; :ledger: [notebooks](main_folder/notebooks)  
+🔗 Ссылки на папки и файлы:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Темплейт на случай создания нового ноутбука  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :floppy_disk: [0.1 (WIN) template_data_analysis.ipynb](main_folder/notebooks/0.1_(WIN)_template_data_analysis.ipynb)  
+📂 [main_folder](main_folder) — Основная папка с кодом и скриптами  
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Скрипт по парсингу сайта ЕРЗ  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :mag: [1.1 (WIN) setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_setting_erz_rg.ipynb)  
-        
-&nbsp;&nbsp;&nbsp;&nbsp; :ledger: [source](source)  
-    
-:notebook_with_decorative_cover: [raw_data](raw_data)  
+📁 [data](main_folder/data) — Обработанные данные  
+📁 [notebooks](main_folder/notebooks) — Ноутбуки с анализом и кодом  
 
-&nbsp;&nbsp;&nbsp;&nbsp; :oil_drum: [csv](raw_data/csv)  
-    
-&nbsp;&nbsp;&nbsp;&nbsp; :oil_drum: [excel](raw_data/excel)  
-    
-&nbsp;&nbsp;&nbsp;&nbsp; :oil_drum: [json](raw_data/json)  
+📓 [0.1 (WIN) template_data_analysis.ipynb](main_folder/notebooks/0.1_(WIN)_template_data_analysis.ipynb) — Шаблон для новых ноутбуков  
+🔍 [1.1 (WIN) setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_setting_erz_rg.ipynb) — Скрипт по парсингу сайта ЕРЗ  
 
-## :cookie: Контакты
+📁 [source](source) — Исходный код и вспомогательные скрипты  
+
+📂 [raw_data](raw_data) — Исходные (сырые) данные  
+
+🛢️ [csv](raw_data/csv) — Данные в формате CSV  
+🛢️ [excel](raw_data/excel) — Данные в формате Excel  
+🛢️ [json](raw_data/json) — Данные в формате JSON  
+
+## 📬 Контакты
+
 - Инженер данных и машинного обучения – [Леонид](https://github.com/barbarossk1n)
 - Инженер машинного обучения и фронтенд/бэкенд-разработчик - [Алёна]()
 - Продакт-менеджер, маркетолог и фронтенд-разработчик - [Екатерина]()
