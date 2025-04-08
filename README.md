@@ -8,7 +8,8 @@
 
 ## :cookie: Структура проекта  
 
-:notebook_with_decorative_cover: [main_folder](main_folder) - основная папка, в которой содержатся все скрипты, связанные с выгрузкой и обработкой данных, а также обучением моделей  
+Основная папка, в которой содержатся все скрипты, связанные с выгрузкой и обработкой данных, а также обучением моделей
+:notebook_with_decorative_cover: [main_folder](main_folder)  
 
 &nbsp;&nbsp;&nbsp;&nbsp; :ledger: [data](main_folder/data)  
     
