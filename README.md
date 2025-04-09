@@ -16,12 +16,12 @@
 ```
 📁 RestatEval
 ├── 📁 main_folder
-│   ├── 📁 data                  
+│   ├── 📁 data          
 │   ├── 📁 notebooks              
 │   │   ├── 📓 0.1 (WIN) template_data_analysis.ipynb  
 │   │   ├── 🔍 1.1 (WIN) parsing_&_setting_erz_rg.ipynb
-│   │   ├── :briefcase: 2.1 (WIN) setting_reestr_&_union_erz.ipynb
-│   │   └── :chart_with_upwards_trend: 2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb
+│   │   ├── 💼 2.1 (WIN) setting_reestr_&_union_erz.ipynb
+│   │   └── 📈 2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb
 │   └── 📁 source        
 │
 └── 📁 raw_data               
@@ -40,7 +40,9 @@
   * 📁 [notebooks](main_folder/notebooks) — Ноутбуки с анализом и кодом  
 
     - 📓 [0.1 (WIN) template_data_analysis.ipynb](main_folder/notebooks/0.1_(WIN)_template_data_analysis.ipynb) — Шаблон для новых ноутбуков  
-    - 🔍 [1.1 (WIN) parsing_&_setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_parsing_&_setting_erz_rg.ipynb) — Скрипт по парсингу сайта ЕРЗ  
+    - 🔍 [1.1 (WIN) parsing_&_setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_parsing_&_setting_erz_rg.ipynb) — Скрипт по парсингу сайта ЕРЗ
+    - 💼 [2.1 (WIN) setting_reestr_&_union_erz.ipynb](main_folder/notebooks/2.1_(WIN)_setting_reestr_&_union_erz.ipynb)
+    - 📈 [2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb](main_folder/notebooks/2.2_(WIN)_setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb)
 
   * 📁 [source](source) — Исходный код и вспомогательные скрипты  
 
