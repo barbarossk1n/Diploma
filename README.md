@@ -73,6 +73,7 @@
  
  * 📁 [app](main_folder/app) — Данные для визуализации сервиса
      - [app_202.py](main_folder/app/app_202.py) — Сервис на основе Streamlit
+     - [xgboost_model.py](main_folder/app/xgboost_model.py) — Предобученная модель XGBoost
 
 ## 📬 Контакты
 | Роль | Имя | GitHub |
