@@ -16,7 +16,9 @@
 ```
 📁 RestatEval
 ├── 📁 main_folder
-│   ├── 📁 data          
+│   ├── 📁 data
+│   │   ├── 
+│   │   └── 
 │   ├── 📁 notebooks              
 │   │   ├── 📓 0.1 (WIN) template_data_analysis.ipynb  
 │   │   ├── 🔍 1.1 (WIN) parsing_&_setting_erz_rg.ipynb
@@ -29,7 +31,7 @@
     ├── 🛢️ excel         
     └── 🛢️ json        
 ```
-
+:file_cabinet:
 🔗 Ссылки на папки и файлы:
 
 - 📂 [main_folder](main_folder) — Основная папка с кодом и скриптами  
@@ -39,8 +41,8 @@
 
     - 📓 [0.1 (WIN) template_data_analysis.ipynb](main_folder/notebooks/0.1_(WIN)_template_data_analysis.ipynb) — Шаблон для новых ноутбуков  
     - 🔍 [1.1 (WIN) parsing_&_setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_parsing_&_setting_erz_rg.ipynb) — Скрипт по парсингу сайта ЕРЗ
-    - 💼 [2.1 (WIN) setting_reestr_&_union_erz.ipynb](main_folder/notebooks/2.1_(WIN)_setting_reestr_&_union_erz.ipynb)
-    - 📈 [2.2 (WIN) setting_reestr_&-errors_graphs-&_no_spb_lo.ipynb](main_folder/notebooks/2.2_(WIN)_setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb)
+    - 💼 [2.1 (WIN) setting_reestr_&_union_erz.ipynb](main_folder/notebooks/2.1_(WIN)_setting_reestr_&_union_erz.ipynb) — Скрипт по обработке данных ЕГРН и их объединения с ЕРЗ
+    - 📈 [2.2 (WIN) setting_reestr_&-errors_graphs-&_no_spb_lo.ipynb](main_folder/notebooks/2.2_(WIN)_setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb) — Скрипт по обработке данных ЕГРН, подсчёте обнаруженных ошибках и выведении их распределения в графиках
 
   * 📁 [source](source) — Исходный код и вспомогательные скрипты  
 
