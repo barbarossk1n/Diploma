@@ -19,7 +19,9 @@
 │   ├── 📁 data                  
 │   ├── 📁 notebooks              
 │   │   ├── 📓 0.1 (WIN) template_data_analysis.ipynb  
-│   │   └── 🔍 1.1 (WIN) parsing_&_setting_erz_rg.ipynb           
+│   │   ├── 🔍 1.1 (WIN) parsing_&_setting_erz_rg.ipynb
+│   │   ├── :briefcase: 2.1 (WIN) setting_reestr_&_union_erz.ipynb
+│   │   └── :chart_with_upwards_trend: 2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb
 │   └── 📁 source        
 │
 └── 📁 raw_data               
