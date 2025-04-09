@@ -24,14 +24,14 @@
 │   │   ├── 🔍 1.1 (WIN) parsing_&_setting_erz_rg.ipynb
 │   │   ├── 💼 2.1 (WIN) setting_reestr_&_union_erz.ipynb
 │   │   └── 📈 2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb
-│   └── 📁 source        
-│
+│   └── 📁 source  
+│       └── 
 └── 📁 raw_data               
     ├── 🛢️ csv         
     ├── 🛢️ excel         
     └── 🛢️ json        
 ```
-
+:clipboard:
 🔗 Ссылки на папки и файлы:
 
 - 📂 [main_folder](main_folder) — Основная папка с кодом и скриптами  
