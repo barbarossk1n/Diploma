@@ -69,7 +69,9 @@
 
   * 🛢️ [csv](raw_data/csv) — Данные в формате .csv  
   * 🛢️ [excel](raw_data/excel) — Данные в формате .xlsx    
-  * 🛢️ [json](raw_data/json) — Данные в формате .json  
+  * 🛢️ [json](raw_data/json) — Данные в формате .json
+ 
+ * 📁 [app](app) — Данные для визуализации сервиса   
 
 ## 📬 Контакты
 | Роль | Имя | GitHub |
