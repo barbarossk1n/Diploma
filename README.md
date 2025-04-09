@@ -17,8 +17,8 @@
 📁 RestatEval
 ├── 📁 main_folder
 │   ├── 📁 data
-│   │   ├── 
-│   │   └── 
+│   │   ├── 🗄️ ERZ_X_metrics.csv
+│   │   └── 🗄️ ERZ_X_values.csv
 │   ├── 📁 notebooks              
 │   │   ├── 📓 0.1 (WIN) template_data_analysis.ipynb  
 │   │   ├── 🔍 1.1 (WIN) parsing_&_setting_erz_rg.ipynb
@@ -31,12 +31,16 @@
     ├── 🛢️ excel         
     └── 🛢️ json        
 ```
-:file_cabinet:
+
 🔗 Ссылки на папки и файлы:
 
 - 📂 [main_folder](main_folder) — Основная папка с кодом и скриптами  
 
   * 📁 [data](main_folder/data) — Обработанные данные  
+
+    - 🗄️ [ERZ_X_metrics.csv](main_folder/data/ERZ_X_metrics.csv) — Обработанные данные из ЕРЗ - стандартизированные (с применением эмбеддинга)  
+    - 🗄️ [ERZ_X_values.csv](main_folder/data/ERZ_X_values.csv) — Обработанные данные из ЕРЗ - только числовой формат  
+
   * 📁 [notebooks](main_folder/notebooks) — Ноутбуки с анализом и кодом  
 
     - 📓 [0.1 (WIN) template_data_analysis.ipynb](main_folder/notebooks/0.1_(WIN)_template_data_analysis.ipynb) — Шаблон для новых ноутбуков  
