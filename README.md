@@ -45,9 +45,9 @@
  
     - 📁 [model_logs](main_folder/data/model_logs) - Папка, которая содержит в себе логи обученных моделей для возможности быстрого развёртывания с целью визуализации
         
-        * 📊 best_params_lgb.json  
-        * 📊 best_params_xgb.json  
-        * 📊 catboost_model.cbm
+        * 📊 [best_params_lgb.json](main_folder/data/model_logs/best_params_lgb.json) - Файл с логами для LightGBM  
+        * 📊 [best_params_xgb.json](main_folder/data/model_logs/best_params_xgb.json) - Файл с логами для XGBoost
+        * 📊 [catboost_model.cbm](main_folder/data/model_logs/catboost_model.cbm) - Файл с логами для CatBoost
         
     - 🗄️ [ERZ_X_metrics.csv](main_folder/data/ERZ_X_metrics.csv) — Обработанные данные из ЕРЗ - стандартизированные (с применением эмбеддинга)  
     - 🗄️ [ERZ_X_values.csv](main_folder/data/ERZ_X_values.csv) — Обработанные данные из ЕРЗ - только числовой формат  
