@@ -17,17 +17,22 @@
 📁 RestatEval
 ├── 📁 main_folder
 │   ├── 📁 data
+│   │   ├── 📁 model_logs
+│   │   │    ├── 📊 best_params_lgb.json
+│   │   │    ├── 📊 best_params_xgb.json
+│   │   │    └── 📊 catboost_model.cbm
 │   │   ├── 🗄️ ERZ_X_metrics.csv
 │   │   └── 🗄️ ERZ_X_values.csv
 │   ├── 📁 notebooks              
 │   │   ├── 📓 0.1 (WIN) template_data_analysis.ipynb  
 │   │   ├── 🔍 1.1 (WIN) parsing_&_setting_erz_rg.ipynb
 │   │   ├── 💼 2.1 (WIN) setting_reestr_&_union_erz.ipynb
-│   │   └── 📈 2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb
+│   │   ├── 📈 2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb
+│   │   └── 📈 3.2 (WIN) 3boosts_&_gprahs.ipynb
 │   └── 📁 source  
 │       └── 📋 parameters_erz_parsing.py  
 └── 📁 raw_data               
-    ├── 🛢️ csv         
+    ├── 🛢️ csv
     ├── 🛢️ excel         
     └── 🛢️ json        
 ```
@@ -36,8 +41,14 @@
 
 - 📂 [main_folder](main_folder) — Основная папка с кодом и скриптами  
 
-  * 📁 [data](main_folder/data) — Обработанные данные  
-
+  * 📁 [data](main_folder/data) — Обработанные данные
+ 
+    - 📁 [model_logs](main_folder/data/model_logs) - Папка, которая содержит в себе логи обученных моделей для возможности быстрого развёртывания с целью визуализации
+        
+        * 📊 best_params_lgb.json  
+        * 📊 best_params_xgb.json  
+        * 📊 catboost_model.cbm
+        
     - 🗄️ [ERZ_X_metrics.csv](main_folder/data/ERZ_X_metrics.csv) — Обработанные данные из ЕРЗ - стандартизированные (с применением эмбеддинга)  
     - 🗄️ [ERZ_X_values.csv](main_folder/data/ERZ_X_values.csv) — Обработанные данные из ЕРЗ - только числовой формат  
 
