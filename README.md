@@ -10,7 +10,7 @@
 - [📬 Контакты](#контакты)  
 
 ## 📌 Описание проекта  
-Цифровой помощник в сфере недвижимости
+Сервис для анализа и прогнозирования стоимости недвижимости. Используя передовые технологии обработки больших данных и машинного обучения, мы создаем инструмент, способный предоставить оценку стоимости квадратного метра для строящихся и существующих объектов.
 
 ## 📂 Структура проекта  
 
@@ -30,6 +30,7 @@
 │   │   ├── 💼 2.1 (WIN) setting_reestr_&_union_erz.ipynb
 │   │   ├── 📈 2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb
 │   │   └── 📈 3.2 (WIN) 3boosts_&_gprahs.ipynb
+│   ├── 📁 site
 │   └── 📁 source  
 │       └── 📋 parameters_erz_parsing.py  
 └── 📁 raw_data               
@@ -58,12 +59,14 @@
     - 📓 [0.1 (WIN) template_data_analysis.ipynb](main_folder/notebooks/0.1_(WIN)_template_data_analysis.ipynb) — Шаблон для новых ноутбуков  
     - 🔍 [1.1 (WIN) parsing_&_setting_erz_rg.ipynb](main_folder/notebooks/1.1_(WIN)_parsing_&_setting_erz_rg.ipynb) — Скрипт по парсингу сайта ЕРЗ
     - 💼 [2.1 (WIN) setting_reestr_&_union_erz.ipynb](main_folder/notebooks/2.1_(WIN)_setting_reestr_&_union_erz.ipynb) — Скрипт по обработке данных ЕГРН и их объединения с ЕРЗ
-    - 📈 [2.2 (WIN) setting_reestr_&-errors_graphs-&_no_spb_lo.ipynb](main_folder/notebooks/2.2_(WIN)_setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb) — Скрипт по обработке данных ЕГРН, подсчёте обнаруженных ошибках и выведении их распределения в графиках  '
+    - 📈 [2.2 (WIN) setting_reestr_&-errors_graphs-&_no_spb_lo.ipynb](main_folder/notebooks/2.2_(WIN)_setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb) — Скрипт по обработке данных ЕГРН, подсчёте обнаруженных ошибках и выведении их распределения в графиках
     - 📈 [3.2 (WIN) 3boosts_&_gprahs.ipynb](main_folder/notebooks/3.2_(WIN)_3boosts_&_gprahs.ipynb) — Скрипт обучает по наилучшим гиперпараметрам бустинги и визуализирует результаты на датасете
 
   * 📁 [source](source) — Исходный код и вспомогательные скрипты
  
     - 📋 [parameters_erz_parsing.py](main_folder/source/parameters_erz_parsing.py) — Скрипт с параметрами страницы ЖК на сайте ЕРЗ, с которой парсятся данные
+
+  * 📁 [site](site) - Код сайта
 
 - 📂 [raw_data](raw_data) — Исходные (сырые) данные  
 
