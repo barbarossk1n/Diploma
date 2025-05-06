@@ -82,6 +82,7 @@
   * 🛢️ [json](raw_data/json) — Данные в формате .json
  
  * 📁 [app](main_folder/app) — Данные для визуализации сервиса
+   
      - [app_202.py](main_folder/app/app_202.py) — Сервис на основе Streamlit
      - [xgboost_model.py](main_folder/app/xgboost_model.py) — Код для обучения модели XGBoost
      - [spatial_index.pkl](main_folder/app/spatial_index.pkl) — Пространственный индекс для ускорения работы сервиса
