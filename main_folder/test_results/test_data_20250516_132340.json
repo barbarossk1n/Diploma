@@ -1,0 +1,18 @@
+{
+    "cache": {
+        "mean": 0,
+        "median": 0,
+        "std_dev": 0,
+        "min": 0,
+        "max": 0,
+        "all_values": []
+    },
+    "orm": {
+        "mean": 0,
+        "median": 0,
+        "std_dev": 0,
+        "min": 0,
+        "max": 0,
+        "all_values": []
+    }
+}
