@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestatEval - Цифровая платформа для анализа рынка недвижимости</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey={{ yandex_maps_api_key }}&lang=ru_RU"></script>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1673&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+        }
+        
+        .benefits-card {
+            background-color: #222;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+        
+        .benefits-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .map-container {
+            height: 400px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .results-section {
+            background-color: #f9f9f9;
+        }
+        
+        .scenario-card {
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .active-tab {
+            border-bottom: 2px solid #38b2ac;
+            color: #38b2ac;
+        }
+        
+        .strategy-card {
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .strategy-card.selected {
+            border-color: #38b2ac;
+            background-color: rgba(56, 178, 172, 0.1);
+        }
+        
+        .strategy-card:hover {
+            border-color: #38b2ac;
+        }
+
+        #loadingIndicator {
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    
+    <header class="header fixed w-full top-0 z-50 py-4 px-6 flex justify-between items-center border-b border-gray-200">
+        <div class="logo text-2xl font-bold">RestatEval</div>
+        <div class="flex items-center space-x-4">
+            {% if user.is_authenticated %}
+            <span class="text-gray-600">{{ user.username }}</span>
+            <a href="/logout/" class="text-gray-600 hover:text-gray-900 py-2 px-4">Выйти</a>
+            {% else %}
+            <a href="/auth/login/yandex-oauth2/" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">Войти</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <section class="hero-section flex items-center justify-center mt-16">
+        <div class="text-center text-white">
+            <h1 class="text-5xl font-bold mb-4">RestatEval</h1>
+            <p class="text-xl mb-8">Цифровой взгляд на рынок новостроек</p>
+        </div>
+    </section>
+
+    <section class="py-16 px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Наши преимущества</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="benefits-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-4">Точность прогнозов</h3>
+                <p>Наши алгоритмы используют передовые технологии машинного обучения для создания точных прогнозов стоимости объектов недвижимости с учетом множества факторов.</p>
+            </div>
+            
+            <div class="benefits-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-4">Сценарии доходности</h3>
+                <p>Анализируйте различные инвестиционные сценарии, сравнивайте стратегии использования недвижимости и выбирайте оптимальные решения для максимальной доходности ваших вложений.</p>
+            </div>
+            
+            <div class="benefits-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-4">Подробный анализ</h3>
+                <p>Получайте детальную информацию о факторах, влияющих на стоимость объекта, включая инфраструктуру и другие параметры локации для принятия обоснованных решений.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="loadingIndicator" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-5 rounded-lg shadow-lg">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-600 mx-auto"></div>
+            <p class="mt-4 text-center">Выполняется расчет...</p>
+        </div>
+    </div>
+
+    <section class="py-16 px-6 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-8">Калькулятор стоимости</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div>
+                <p class="mb-4 text-center">Нажмите на карту, чтобы выбрать локацию</p>
+                <div id="map" class="map-container rounded-lg shadow-lg"></div>
+                <input type="hidden" id="location_lat" name="location_lat">
+                <input type="hidden" id="location_lng" name="location_lng">
+                <input type="hidden" id="location_address" name="location_address">
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold mb-4">Настройте параметры для получения прогноза</h3>
+                
+                <form id="prediction-form" class="space-y-4" onsubmit="calculatePrediction(event)">
+                    {% csrf_token %}
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Площадь квартиры</label>
+                        <div class="flex items-center space-x-4">
+                            <input type="range" id="area" name="area" min="20" max="200" value="60" class="w-full">
+                            <span id="area-value" class="text-sm font-medium">60 м²</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Тип помещения</label>
+                        <select id="property_type" name="property_type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="квартира">Квартира</option>
+                            <option value="апартаменты">Апартаменты</option>
+                            <option value="студия">Студия</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Класс недвижимости</label>
+                        <select id="property_class" name="property_class" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="1">Эконом</option>
+                            <option value="2">Комфорт</option>
+                            <option value="3">Комфорт+</option>
+                            <option value="4">Бизнес</option>
+                            <option value="5">Элит</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Дата покупки</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <select id="purchase_month" name="purchase_month" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    <option value="1">Январь</option>
+                                    <option value="2">Февраль</option>
+                                    <option value="3">Март</option>
+                                    <option value="4">Апрель</option>
+                                    <option value="5">Май</option>
+                                    <option value="6">Июнь</option>
+                                    <option value="7">Июль</option>
+                                    <option value="8">Август</option>
+                                    <option value="9">Сентябрь</option>
+                                    <option value="10">Октябрь</option>
+                                    <option value="11">Ноябрь</option>
+                                    <option value="12">Декабрь</option>
+                                </select>
+                            </div>
+                            <div>
+                                <select id="purchase_year" name="purchase_year" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    <script>
+                                        const currentYear = new Date().getFullYear();
+                                        for(let year = currentYear - 5; year <= currentYear + 5; year++) {
+                                            document.write(`<option value="${year}"${year === currentYear ? ' selected' : ''}>${year}</option>`);
+                                        }
+                                    </script>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Отделка</label>
+                        <select id="finishing_type" name="finishing_type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="с отделкой">С отделкой</option>
+                            <option value="без отделки">Без отделки</option>
+
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Этаж</label>
+                        <div class="flex items-center space-x-4">
+                            <input type="range" id="floor" name="floor" min="1" max="50" value="10" class="w-full">
+                            <span id="floor-value" class="text-sm font-medium">10</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                        Рассчитать прогноз
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="results-section" class="py-16 px-6 results-section hidden">
+        <h2 class="text-3xl font-bold text-center mb-8">Результаты анализа</h2>
+        
+        <div class="max-w-6xl mx-auto">
+            <div id="results-container">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold mb-2">Прогнозируемая стоимость</h3>
+                    <p id="predicted-price" class="text-4xl font-bold text-cyan-600">0 ₽</p>
+                    <p id="price-description" class="text-gray-600 mt-2">На основе выбранных параметров и текущих рыночных условий</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white p-5 rounded-lg shadow-lg overflow-hidden">
+                        <h4 class="text-lg font-bold mb-3">Динамика цен на рынке недвижимости</h4>
+                        <div id="price-dynamics-chart" class="h-60"></div>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-lg shadow-lg overflow-hidden">
+                        <h4 class="text-lg font-bold mb-3">Факторы, влияющие на прогноз</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="overflow-hidden">
+                                <ul class="space-y-3">
+                                    <li class="flex justify-between items-center text-sm">
+                                        <span class="truncate">Привлекательность района/локации (УРЖ)</span>
+                                        <span id="factor-location" class="font-bold pl-2">30%</span>
+                                    </li>
+                                    <li class="flex justify-between items-center text-sm">
+                                        <span class="truncate">Транспортная доступность</span>
+                                        <span id="factor-transport" class="font-bold pl-2">20%</span>
+                                    </li>
+                                    <li class="flex justify-between items-center text-sm">
+                                        <span class="truncate">Социальная инфраструктура района</span>
+                                        <span id="factor-social" class="font-bold pl-2">15%</span>
+                                    </li>
+                                    <li class="flex justify-between items-center text-sm">
+                                        <span class="truncate">Перспективы развития локации</span>
+                                        <span id="factor-development" class="font-bold pl-2">20%</span>
+                                    </li>
+                                    <li class="flex justify-between items-center text-sm">
+                                        <span class="truncate">Макроэкономические факторы</span>
+                                        <span id="factor-macro" class="font-bold pl-2">15%</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="factors-chart" class="h-48"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Глобальная переменная для карты
+        let myMap;
+
+        // Инициализация карты при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверяем, загружен ли API Яндекс.Карт
+            if (typeof ymaps !== 'undefined') {
+                ymaps.ready(initMap);
+            } else {
+                console.error('Yandex Maps API not loaded');
+            }
+
+            // Инициализация обработчиков для ползунков
+            initializeRangeInputs();
+        });
+
+        // Функция инициализации карты
+        function initMap() {
+            try {
+                // Создаем карту
+                myMap = new ymaps.Map('map', {
+                    center: [55.76, 37.64], // Координаты центра Москвы
+                    zoom: 10,
+                    controls: ['zoomControl', 'searchControl']
+                });
+                
+                // Добавляем обработчик клика
+                myMap.events.add('click', function (e) {
+                    var coords = e.get('coords');
+                    
+                    // Очищаем предыдущие метки
+                    myMap.geoObjects.removeAll();
+                    
+                    // Создаем метку
+                    var placemark = new ymaps.Placemark(coords, {}, {
+                        preset: 'islands#redDotIcon'
+                    });
+                    
+                    // Добавляем метку на карту
+                    myMap.geoObjects.add(placemark);
+                    
+                    // Получаем адрес по координатам
+                    ymaps.geocode(coords).then(function (res) {
+                        var firstGeoObject = res.geoObjects.get(0);
+                        var address = firstGeoObject.getAddressLine();
+                        
+                        // Сохраняем координаты и адрес в скрытых полях
+                        document.getElementById('location_lat').value = coords[0].toFixed(6);
+                        document.getElementById('location_lng').value = coords[1].toFixed(6);
+                        document.getElementById('location_address').value = address;
+                    });
+                });
+
+                console.log('Map initialized successfully');
+            } catch (error) {
+                console.error('Error initializing map:', error);
+            }
+        }
+
+        // Функция инициализации ползунков
+        function initializeRangeInputs() {
+            document.querySelectorAll('input[type="range"]').forEach(input => {
+                const valueDisplay = document.getElementById(`${input.id}-value`);
+                
+                if (valueDisplay) {
+                    let suffix = '';
+                    if (input.id === 'area') suffix = ' м²';
+                    valueDisplay.textContent = input.value + suffix;
+                    
+                    input.addEventListener('input', function() {
+                        valueDisplay.textContent = this.value + suffix;
+                    });
+                }
+            });
+        }
+
+        // Функция получения CSRF-токена
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // Функция расчета прогноза
+        function calculatePrediction(event) {
+            event.preventDefault();
+            
+            const locationLat = document.getElementById('location_lat').value;
+            const locationLng = document.getElementById('location_lng').value;
+            const locationAddress = document.getElementById('location_address').value;
+            
+            if (!locationLat || !locationLng || !locationAddress) {
+                alert('Пожалуйста, выберите локацию на карте');
+                return;
+            }
+            
+            // Показать индикатор загрузки
+            document.getElementById('loadingIndicator').style.display = 'block';
+            
+            const form = document.getElementById('prediction-form');
+            const formData = new FormData(form);
+            formData.append('location_lat', locationLat);
+            formData.append('location_lng', locationLng);
+            formData.append('location_address', locationAddress);
+
+            fetch('/calculate-prediction/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Received data:', data);
+                
+                if (data.success) {
+                    document.querySelector('body').dataset.predictionId = data.prediction_id;
+                    displayResults(data.results);
+                    document.getElementById('results-section').classList.remove('hidden');
+                    document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error(data.error || 'Неизвестная ошибка');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Произошла ошибка при выполнении запроса: ' + error.message);
+            })
+            .finally(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+            });
+        }
+
+        // Функция отображения результатов
+        function displayResults(results) {
+            const realisticScenario = results.find(r => r.scenario_type === 'realistic');
+            if (!realisticScenario) {
+                console.error('Realistic scenario not found in results');
+                return;
+            }
+
+            // Обновляем прогнозируемую стоимость
+            document.getElementById('predicted-price').textContent = 
+                new Intl.NumberFormat('ru-RU', { 
+                    style: 'currency', 
+                    currency: 'RUB',
+                    maximumFractionDigits: 0 
+                }).format(realisticScenario.predicted_price);
+
+            // Обновляем факторы влияния
+            const factors = realisticScenario.influence_factors;
+            Object.entries(factors).forEach(([key, value]) => {
+                const elementId = `factor-${key.split('_')[0]}`;
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.textContent = `${value}%`;
+                }
+            });
+
+            // Создаем графики
+            createPriceDynamicsChart(realisticScenario.price_dynamics);
+            createFactorsChart(factors);
+        }
+
+        // Функция создания графика динамики цен
+        function createPriceDynamicsChart(dynamics) {
+            Plotly.newPlot('price-dynamics-chart', [{
+                x: dynamics.dates,
+                y: dynamics.prices,
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Прогноз стоимости',
+                line: {
+                    color: '#0891b2'
+                }
+            }], {
+                margin: { t: 20, r: 20, b: 40, l: 60 },
+                xaxis: { 
+                    title: 'Дата',
+                    gridcolor: '#f0f0f0'
+                },
+                yaxis: { 
+                    title: 'Стоимость, руб.',
+                    tickformat: ',.0f',
+                    gridcolor: '#f0f0f0'
+                },
+                paper_bgcolor: 'white',
+                plot_bgcolor: 'white',
+                showlegend: false
+            });
+        }
+
+        // Функция создания графика факторов
+        function createFactorsChart(factors) {
+            const factorNames = {
+                location_attractiveness: 'Привлекательность района',
+                transport_accessibility: 'Транспортная доступность',
+                social_infrastructure: 'Социальная инфраструктура',
+                location_development: 'Перспективы развития',
+                macroeconomic: 'Макроэкономические факторы'
+            };
+
+            Plotly.newPlot('factors-chart', [{
+                values: Object.values(factors),
+                labels: Object.keys(factors).map(key => factorNames[key] || key),
+                type: 'pie',
+                textinfo: 'percent',
+                hole: 0.4,
+                marker: {
+                    colors: ['#0891b2', '#0ea5e9', '#38bdf8', '#7dd3fc', '#bae6fd']
+                }
+            }], {
+                margin: { t: 20, r: 20, b: 20, l: 20 },
+                showlegend: false,
+                paper_bgcolor: 'white'
+            });
+        }
+    </script>
+</body>
+</html>
