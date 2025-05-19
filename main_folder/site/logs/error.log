@@ -1,0 +1,701 @@
+ERROR 2025-05-18 11:17:09,512 views 11080 1640 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("location_address", "latitude", "l...
+                                  ^
+
+ERROR 2025-05-18 11:17:09,701 views 11080 1640 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("location_address", "latitude", "l...
+                                  ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 99, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("location_address", "latitude", "l...
+                                  ^
+
+
+ERROR 2025-05-18 11:17:09,711 log 11080 1640 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-18 12:05:37,640 views 20720 22136 Ошибка при создании объекта недвижимости: ОШИБКА:  отношение "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                    ^
+
+ERROR 2025-05-18 12:05:37,640 log 20720 22136 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-18 12:27:39,440 ml_models 14756 20036 Error creating prediction result for scenario realistic: Object of type float32 is not JSON serializable
+ERROR 2025-05-18 12:27:39,453 views 14756 20036 Необработанная ошибка: Object of type PredictionResult is not JSON serializable
+ERROR 2025-05-18 12:27:39,456 log 14756 20036 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-18 12:46:20,176 ml_models 19996 15440 Error creating prediction result for scenario realistic: Object of type float32 is not JSON serializable
+ERROR 2025-05-18 12:48:55,708 ml_models 11900 6484 Error creating prediction result for scenario realistic: Object of type float32 is not JSON serializable
+ERROR 2025-05-18 12:51:05,015 ml_models 11900 6484 Error creating prediction result for scenario realistic: Object of type float32 is not JSON serializable
+ERROR 2025-05-18 15:45:02,067 views 4628 14796 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+ERROR 2025-05-18 15:45:02,069 views 4628 14796 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+ERROR 2025-05-18 15:45:02,069 log 4628 14796 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-18 15:45:09,811 views 4628 14796 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+ERROR 2025-05-18 15:45:09,811 views 4628 14796 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+ERROR 2025-05-18 15:45:09,816 log 4628 14796 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-18 15:46:33,521 views 10660 22316 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+ERROR 2025-05-18 15:46:33,528 views 10660 22316 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+ERROR 2025-05-18 15:46:33,528 log 10660 22316 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-18 23:29:21,252 views 17672 11868 Ошибка при создании объекта недвижимости: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year', 'purchase_date'
+ERROR 2025-05-18 23:29:21,277 views 17672 11868 Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year', 'purchase_date'
+
+ERROR 2025-05-18 23:29:21,280 log 17672 11868 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-18 23:50:25,311 views 14636 21012 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+ERROR 2025-05-18 23:50:25,345 views 14636 21012 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+
+ERROR 2025-05-18 23:50:25,357 log 14636 21012 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-18 23:51:15,579 views 14636 21012 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+ERROR 2025-05-18 23:51:15,579 views 14636 21012 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+
+ERROR 2025-05-18 23:51:15,587 log 14636 21012 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 00:00:29,081 views 16480 18620 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ...l_floors", "area", "build_year", "purchase_date", "created_a...
+                                                             ^
+
+ERROR 2025-05-19 00:00:29,112 views 16480 18620 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ...l_floors", "area", "build_year", "purchase_date", "created_a...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ...l_floors", "area", "build_year", "purchase_date", "created_a...
+                                                             ^
+
+
+ERROR 2025-05-19 00:00:29,125 log 16480 18620 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 00:11:43,242 views 13796 8292 Ошибка при создании объекта недвижимости: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year', 'purchase_date'
+ERROR 2025-05-19 00:11:43,257 views 13796 8292 Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year', 'purchase_date'
+
+ERROR 2025-05-19 00:11:43,264 log 13796 8292 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 00:26:26,658 views 11872 21120 Ошибка при создании объекта недвижимости: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year'
+ERROR 2025-05-19 00:26:26,676 views 11872 21120 Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year'
+
+ERROR 2025-05-19 00:26:26,687 log 11872 21120 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 00:57:32,187 views 7840 11448 Ошибка при создании объекта недвижимости: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year'
+ERROR 2025-05-19 00:57:32,271 views 7840 11448 Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year'
+
+ERROR 2025-05-19 00:57:32,271 log 7840 11448 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 01:14:44,882 views 15124 11148 Необработанная ошибка: name 'class_mapping' is not defined
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 92, in calculate_prediction
+    'property_class': class_mapping.get(int(property_class), 'эконом'),
+                      ^^^^^^^^^^^^^
+NameError: name 'class_mapping' is not defined
+ERROR 2025-05-19 01:14:44,902 log 15124 11148 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 02:13:37,977 ml_models 8560 4044 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:13:37,977 ml_models 8560 4044 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 198, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:13:37,977 views 8560 4044 Error generating prediction: Не удалось сгенерировать прогноз
+ERROR 2025-05-19 02:13:37,993 log 8560 4044 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 02:15:25,892 ml_models 9960 12360 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:15:25,892 ml_models 9960 12360 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 216, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:15:25,892 views 9960 12360 Error generating prediction: Не удалось сгенерировать прогноз
+ERROR 2025-05-19 02:15:25,909 log 9960 12360 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 02:15:42,337 ml_models 9960 12360 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:15:42,337 ml_models 9960 12360 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 216, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:15:42,337 views 9960 12360 Error generating prediction: Не удалось сгенерировать прогноз
+ERROR 2025-05-19 02:15:42,348 log 9960 12360 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 02:16:50,039 ml_models 16952 19928 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:16:50,039 ml_models 16952 19928 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 216, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:16:50,039 views 16952 19928 Error generating prediction: Не удалось сгенерировать прогноз
+ERROR 2025-05-19 02:16:50,055 log 16952 19928 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 02:17:24,621 ml_models 21188 10420 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:17:24,621 ml_models 21188 10420 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 216, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:17:24,621 views 21188 10420 Error generating prediction: Не удалось сгенерировать прогноз
+ERROR 2025-05-19 02:17:24,638 log 21188 10420 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 02:46:11,554 ml_models 12468 12660 Error loading model: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,554 ml_models 12468 12660 Error in predict: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,587 ml_models 12468 12660 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 184, in predict
+    self.model = self._load_model()
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 82, in _load_model
+    model = xgb.XGBRegressor()
+            ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1717, in __init__
+    super().__init__(objective=objective, **kwargs)
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 673, in __init__
+    raise ImportError(
+ImportError: sklearn needs to be installed in order to use this module
+
+ERROR 2025-05-19 02:46:11,587 ml_models 12468 12660 Error in model testing: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,604 ml_models 12468 12660 Error loading model: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,604 ml_models 12468 12660 Error in predict: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,604 ml_models 12468 12660 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 184, in predict
+    self.model = self._load_model()
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 82, in _load_model
+    model = xgb.XGBRegressor()
+            ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1717, in __init__
+    super().__init__(objective=objective, **kwargs)
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 673, in __init__
+    raise ImportError(
+ImportError: sklearn needs to be installed in order to use this module
+
+ERROR 2025-05-19 02:46:11,619 ml_models 12468 12660 Error making prediction: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,620 ml_models 12468 12660 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 263, in generate_prediction
+    base_price = float(model.predict(X)[0])
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 184, in predict
+    self.model = self._load_model()
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 82, in _load_model
+    model = xgb.XGBRegressor()
+            ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1717, in __init__
+    super().__init__(objective=objective, **kwargs)
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 673, in __init__
+    raise ImportError(
+ImportError: sklearn needs to be installed in order to use this module
+
+ERROR 2025-05-19 02:46:11,620 views 12468 12660 Error generating prediction: Не удалось сгенерировать прогноз
+ERROR 2025-05-19 02:46:11,620 log 12468 12660 Internal Server Error: /calculate-prediction/
+ERROR 2025-05-19 02:50:10,153 ml_models 12808 15560 Error in predict: Not supported type for data.<class 'xgboost.core.DMatrix'>
+ERROR 2025-05-19 02:50:10,168 ml_models 12808 15560 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 188, in predict
+    base_prediction = self.model.predict(X)[0]
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1181, in predict
+    test = DMatrix(
+           ^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 856, in __init__
+    handle, feature_names, feature_types = dispatch_data_backend(
+                                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\data.py", line 1131, in dispatch_data_backend
+    raise TypeError("Not supported type for data." + str(type(data)))
+TypeError: Not supported type for data.<class 'xgboost.core.DMatrix'>
+
+ERROR 2025-05-19 02:50:10,170 ml_models 12808 15560 Error in model testing: Not supported type for data.<class 'xgboost.core.DMatrix'>
+ERROR 2025-05-19 02:50:10,188 ml_models 12808 15560 Error in predict: Not supported type for data.<class 'xgboost.core.DMatrix'>
+ERROR 2025-05-19 02:50:10,188 ml_models 12808 15560 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 188, in predict
+    base_prediction = self.model.predict(X)[0]
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1181, in predict
+    test = DMatrix(
+           ^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 856, in __init__
+    handle, feature_names, feature_types = dispatch_data_backend(
+                                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\data.py", line 1131, in dispatch_data_backend
+    raise TypeError("Not supported type for data." + str(type(data)))
+TypeError: Not supported type for data.<class 'xgboost.core.DMatrix'>
+
+ERROR 2025-05-19 02:50:10,188 ml_models 12808 15560 Error making prediction: Not supported type for data.<class 'xgboost.core.DMatrix'>
+ERROR 2025-05-19 02:50:10,188 ml_models 12808 15560 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 263, in generate_prediction
+    base_price = float(model.predict(X)[0])
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 188, in predict
+    base_prediction = self.model.predict(X)[0]
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1181, in predict
+    test = DMatrix(
+           ^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 856, in __init__
+    handle, feature_names, feature_types = dispatch_data_backend(
+                                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\data.py", line 1131, in dispatch_data_backend
+    raise TypeError("Not supported type for data." + str(type(data)))
+TypeError: Not supported type for data.<class 'xgboost.core.DMatrix'>
+
+ERROR 2025-05-19 02:50:10,188 views 12808 15560 Error generating prediction: Не удалось сгенерировать прогноз
+ERROR 2025-05-19 02:50:10,224 log 12808 15560 Internal Server Error: /calculate-prediction/

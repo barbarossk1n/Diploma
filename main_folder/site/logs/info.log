@@ -1,0 +1,212 @@
+INFO 2025-05-17 23:38:38,533 autoreload 7924 8480 Watching for file changes with StatReloader
+INFO 2025-05-18 11:16:35,156 autoreload 11080 15608 Watching for file changes with StatReloader
+INFO 2025-05-18 11:17:04,932 basehttp 11080 1640 "GET / HTTP/1.1" 200 22827
+WARNING 2025-05-18 11:17:06,436 basehttp 11080 1640 "GET /favicon.ico HTTP/1.1" 404 3207
+ERROR 2025-05-18 11:17:09,711 basehttp 11080 1640 "POST /calculate-prediction/ HTTP/1.1" 500 571
+INFO 2025-05-18 11:41:11,242 autoreload 11080 15608 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-18 11:41:13,408 autoreload 12076 5516 Watching for file changes with StatReloader
+INFO 2025-05-18 11:41:22,961 autoreload 12076 5516 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-18 11:41:25,072 autoreload 1776 19772 Watching for file changes with StatReloader
+INFO 2025-05-18 11:45:45,480 autoreload 1776 19772 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-18 11:45:47,739 autoreload 23012 9104 Watching for file changes with StatReloader
+INFO 2025-05-18 11:50:34,080 autoreload 23012 9104 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-18 11:50:36,422 autoreload 16764 8892 Watching for file changes with StatReloader
+INFO 2025-05-18 11:52:10,462 autoreload 16764 8892 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-18 11:52:13,060 autoreload 14220 14828 Watching for file changes with StatReloader
+INFO 2025-05-18 12:05:17,215 autoreload 20720 14476 Watching for file changes with StatReloader
+INFO 2025-05-18 12:05:31,953 basehttp 20720 22136 "GET / HTTP/1.1" 200 22827
+ERROR 2025-05-18 12:05:37,647 basehttp 20720 22136 "POST /calculate-prediction/ HTTP/1.1" 500 497
+INFO 2025-05-18 12:27:08,357 autoreload 14756 9108 Watching for file changes with StatReloader
+INFO 2025-05-18 12:27:34,379 basehttp 14756 20036 "GET / HTTP/1.1" 200 22827
+ERROR 2025-05-18 12:27:39,458 basehttp 14756 20036 "POST /calculate-prediction/ HTTP/1.1" 500 211
+INFO 2025-05-18 12:30:03,153 autoreload 14756 9108 C:\Projects\restateval\api\serializers.py changed, reloading.
+INFO 2025-05-18 12:30:05,789 autoreload 14740 1792 Watching for file changes with StatReloader
+INFO 2025-05-18 12:33:36,989 autoreload 14740 1792 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-18 12:33:39,670 autoreload 13120 15820 Watching for file changes with StatReloader
+INFO 2025-05-18 12:45:57,778 autoreload 19996 17860 Watching for file changes with StatReloader
+INFO 2025-05-18 12:46:13,802 basehttp 19996 15440 "GET / HTTP/1.1" 200 22827
+INFO 2025-05-18 12:46:20,192 basehttp 19996 15440 "POST /calculate-prediction/ HTTP/1.1" 200 1060
+INFO 2025-05-18 12:48:42,329 autoreload 11900 2668 Watching for file changes with StatReloader
+INFO 2025-05-18 12:48:50,920 basehttp 11900 6484 "GET / HTTP/1.1" 200 22827
+INFO 2025-05-18 12:48:55,725 basehttp 11900 6484 "POST /calculate-prediction/ HTTP/1.1" 200 1060
+INFO 2025-05-18 12:51:00,457 basehttp 11900 6484 "GET / HTTP/1.1" 200 22827
+INFO 2025-05-18 12:51:05,031 basehttp 11900 6484 "POST /calculate-prediction/ HTTP/1.1" 200 1060
+INFO 2025-05-18 13:10:48,618 autoreload 11900 2668 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-18 13:10:51,046 autoreload 20508 22868 Watching for file changes with StatReloader
+INFO 2025-05-18 13:13:12,631 autoreload 20508 22868 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-18 13:13:15,447 autoreload 19060 8204 Watching for file changes with StatReloader
+INFO 2025-05-18 13:14:49,450 autoreload 19060 8204 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-18 13:14:52,198 autoreload 17336 9172 Watching for file changes with StatReloader
+INFO 2025-05-18 13:15:31,134 autoreload 17336 9172 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-18 13:15:34,116 autoreload 15020 17720 Watching for file changes with StatReloader
+INFO 2025-05-18 13:36:55,767 autoreload 15020 17720 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-18 13:36:58,673 autoreload 9368 9164 Watching for file changes with StatReloader
+INFO 2025-05-18 13:38:03,661 autoreload 17388 10812 Watching for file changes with StatReloader
+INFO 2025-05-18 13:38:17,346 basehttp 17388 6280 "GET / HTTP/1.1" 200 22827
+INFO 2025-05-18 13:38:22,507 basehttp 17388 6280 "POST /calculate-prediction/ HTTP/1.1" 200 1426
+INFO 2025-05-18 13:39:31,771 autoreload 4356 21952 Watching for file changes with StatReloader
+INFO 2025-05-18 13:39:46,484 basehttp 4356 15632 "GET / HTTP/1.1" 200 22827
+INFO 2025-05-18 13:39:50,452 basehttp 4356 15632 "POST /calculate-prediction/ HTTP/1.1" 200 1427
+INFO 2025-05-18 14:19:12,064 autoreload 4628 12016 Watching for file changes with StatReloader
+INFO 2025-05-18 14:20:08,163 basehttp 4628 20524 "GET / HTTP/1.1" 200 25930
+INFO 2025-05-18 14:20:13,077 basehttp 4628 20524 "GET / HTTP/1.1" 200 25930
+INFO 2025-05-18 14:22:31,270 basehttp 4628 20524 "GET / HTTP/1.1" 200 22827
+INFO 2025-05-18 14:22:36,740 basehttp 4628 20524 "POST /calculate-prediction/ HTTP/1.1" 200 1427
+INFO 2025-05-18 14:34:59,404 basehttp 4628 12104 "POST /calculate-prediction/ HTTP/1.1" 200 1427
+INFO 2025-05-18 14:40:31,112 basehttp 4628 13300 "GET / HTTP/1.1" 200 23044
+INFO 2025-05-18 14:46:12,972 basehttp 4628 18600 "GET / HTTP/1.1" 200 23036
+INFO 2025-05-18 14:46:42,921 basehttp 4628 18600 "GET / HTTP/1.1" 200 23037
+INFO 2025-05-18 14:58:45,507 basehttp 4628 16444 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-18 14:58:53,367 basehttp 4628 16444 "POST /calculate-prediction/ HTTP/1.1" 200 1427
+INFO 2025-05-18 14:59:02,653 basehttp 4628 16444 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-18 14:59:14,782 basehttp 4628 16444 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-18 15:37:25,988 basehttp 4628 16992 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-18 15:44:58,480 basehttp 4628 14796 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-18 15:45:02,069 basehttp 4628 14796 "POST /calculate-prediction/ HTTP/1.1" 500 586
+INFO 2025-05-18 15:45:07,366 basehttp 4628 14796 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-18 15:45:09,816 basehttp 4628 14796 "POST /calculate-prediction/ HTTP/1.1" 500 586
+INFO 2025-05-18 15:46:16,668 autoreload 10660 16220 Watching for file changes with StatReloader
+INFO 2025-05-18 15:46:24,143 basehttp 10660 22316 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-18 15:46:25,264 basehttp 10660 22316 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-18 15:46:30,496 basehttp 10660 22316 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-18 15:46:33,528 basehttp 10660 22316 "POST /calculate-prediction/ HTTP/1.1" 500 586
+INFO 2025-05-18 16:01:22,174 autoreload 10660 16220 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-18 16:01:23,256 autoreload 6956 9352 Watching for file changes with StatReloader
+INFO 2025-05-18 23:29:02,343 autoreload 17672 2312 Watching for file changes with StatReloader
+INFO 2025-05-18 23:29:16,172 basehttp 17672 11868 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-18 23:29:21,280 basehttp 17672 11868 "POST /calculate-prediction/ HTTP/1.1" 500 309
+INFO 2025-05-18 23:33:40,134 autoreload 17672 2312 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-18 23:33:43,085 autoreload 14712 11988 Watching for file changes with StatReloader
+INFO 2025-05-18 23:47:05,655 autoreload 14712 11988 C:\Projects\restateval\core\admin.py changed, reloading.
+INFO 2025-05-18 23:47:08,283 autoreload 20684 18572 Watching for file changes with StatReloader
+INFO 2025-05-18 23:47:18,675 autoreload 20684 18572 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-18 23:47:21,024 autoreload 2752 13380 Watching for file changes with StatReloader
+INFO 2025-05-18 23:49:09,866 autoreload 14636 14784 Watching for file changes with StatReloader
+INFO 2025-05-18 23:49:25,135 basehttp 14636 21012 "GET / HTTP/1.1" 200 24889
+ERROR 2025-05-18 23:50:25,358 basehttp 14636 21012 "POST /calculate-prediction/ HTTP/1.1" 500 596
+INFO 2025-05-18 23:51:09,257 basehttp 14636 21012 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-18 23:51:15,587 basehttp 14636 21012 "POST /calculate-prediction/ HTTP/1.1" 500 596
+INFO 2025-05-18 23:57:15,271 autoreload 14636 14784 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-18 23:57:17,934 autoreload 21040 6040 Watching for file changes with StatReloader
+INFO 2025-05-19 00:00:05,782 autoreload 16480 22496 Watching for file changes with StatReloader
+INFO 2025-05-19 00:00:25,104 basehttp 16480 18620 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 00:00:29,131 basehttp 16480 18620 "POST /calculate-prediction/ HTTP/1.1" 500 596
+INFO 2025-05-19 00:04:15,970 autoreload 16480 22496 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-19 00:04:18,702 autoreload 22700 23500 Watching for file changes with StatReloader
+INFO 2025-05-19 00:09:43,710 autoreload 22700 23500 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-19 00:09:46,403 autoreload 15900 9856 Watching for file changes with StatReloader
+INFO 2025-05-19 00:11:21,131 autoreload 13796 18688 Watching for file changes with StatReloader
+INFO 2025-05-19 00:11:38,006 basehttp 13796 8292 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 00:11:43,268 basehttp 13796 8292 "POST /calculate-prediction/ HTTP/1.1" 500 309
+INFO 2025-05-19 00:21:33,256 autoreload 13796 18688 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-19 00:21:35,699 autoreload 6864 6420 Watching for file changes with StatReloader
+INFO 2025-05-19 00:25:53,484 autoreload 11872 18832 Watching for file changes with StatReloader
+INFO 2025-05-19 00:26:22,296 basehttp 11872 21120 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 00:26:26,691 basehttp 11872 21120 "POST /calculate-prediction/ HTTP/1.1" 500 292
+INFO 2025-05-19 00:57:14,072 autoreload 7840 21888 Watching for file changes with StatReloader
+INFO 2025-05-19 00:57:27,761 basehttp 7840 11448 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 00:57:32,271 basehttp 7840 11448 "POST /calculate-prediction/ HTTP/1.1" 500 292
+INFO 2025-05-19 01:00:13,915 autoreload 7840 21888 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-19 01:00:15,003 autoreload 11196 11552 Watching for file changes with StatReloader
+INFO 2025-05-19 01:00:32,487 autoreload 11196 11552 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-19 01:00:33,534 autoreload 8656 1980 Watching for file changes with StatReloader
+INFO 2025-05-19 01:01:47,228 autoreload 8656 1980 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-19 01:01:48,275 autoreload 23460 21340 Watching for file changes with StatReloader
+INFO 2025-05-19 01:01:59,050 autoreload 23460 21340 C:\Projects\restateval\core\models.py changed, reloading.
+INFO 2025-05-19 01:02:00,089 autoreload 9800 13704 Watching for file changes with StatReloader
+INFO 2025-05-19 01:14:27,978 autoreload 15124 15936 Watching for file changes with StatReloader
+INFO 2025-05-19 01:14:41,751 basehttp 15124 11148 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 01:14:44,902 basehttp 15124 11148 "POST /calculate-prediction/ HTTP/1.1" 500 153
+INFO 2025-05-19 01:16:50,672 autoreload 15124 15936 C:\Projects\restateval\core\views.py changed, reloading.
+INFO 2025-05-19 01:16:51,651 autoreload 21612 14012 Watching for file changes with StatReloader
+INFO 2025-05-19 01:17:43,590 autoreload 4500 11320 Watching for file changes with StatReloader
+INFO 2025-05-19 01:17:53,911 basehttp 4500 13040 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 01:17:57,228 basehttp 4500 13040 "POST /calculate-prediction/ HTTP/1.1" 200 1054
+INFO 2025-05-19 01:18:07,486 basehttp 4500 13040 "POST /calculate-prediction/ HTTP/1.1" 200 1054
+INFO 2025-05-19 01:18:10,842 basehttp 4500 13040 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 01:18:21,344 basehttp 4500 13040 "POST /calculate-prediction/ HTTP/1.1" 200 1054
+INFO 2025-05-19 01:18:28,256 basehttp 4500 13040 "POST /calculate-prediction/ HTTP/1.1" 200 1057
+INFO 2025-05-19 01:18:40,330 basehttp 4500 13040 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 01:18:43,347 basehttp 4500 13040 "POST /calculate-prediction/ HTTP/1.1" 200 1057
+INFO 2025-05-19 01:18:54,707 basehttp 4500 13040 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 01:18:58,688 basehttp 4500 13040 "POST /calculate-prediction/ HTTP/1.1" 200 1057
+INFO 2025-05-19 01:21:51,128 basehttp 4500 13040 "POST /calculate-prediction/ HTTP/1.1" 200 1057
+INFO 2025-05-19 01:28:22,075 autoreload 12376 23180 Watching for file changes with StatReloader
+INFO 2025-05-19 01:28:33,536 basehttp 12376 14104 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 01:28:36,689 basehttp 12376 14104 "POST /calculate-prediction/ HTTP/1.1" 200 1057
+INFO 2025-05-19 01:32:05,492 autoreload 12376 23180 C:\Projects\restateval\restateval\settings.py changed, reloading.
+INFO 2025-05-19 01:32:06,524 autoreload 10980 8224 Watching for file changes with StatReloader
+INFO 2025-05-19 01:35:42,561 autoreload 4260 21344 Watching for file changes with StatReloader
+INFO 2025-05-19 01:35:55,045 basehttp 4260 16972 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 01:35:59,677 basehttp 4260 16972 "POST /calculate-prediction/ HTTP/1.1" 200 1057
+INFO 2025-05-19 01:40:24,143 autoreload 4260 21344 C:\Projects\restateval\core\services.py changed, reloading.
+INFO 2025-05-19 01:40:25,067 autoreload 1736 20184 Watching for file changes with StatReloader
+INFO 2025-05-19 02:13:20,841 autoreload 8560 3864 Watching for file changes with StatReloader
+INFO 2025-05-19 02:13:32,947 basehttp 8560 4044 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 02:13:37,993 basehttp 8560 4044 "POST /calculate-prediction/ HTTP/1.1" 500 190
+INFO 2025-05-19 02:15:15,815 autoreload 8560 3864 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:15:16,945 autoreload 9960 13992 Watching for file changes with StatReloader
+ERROR 2025-05-19 02:15:25,909 basehttp 9960 12360 "POST /calculate-prediction/ HTTP/1.1" 500 190
+INFO 2025-05-19 02:15:29,401 basehttp 9960 12360 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 02:15:42,348 basehttp 9960 12360 "POST /calculate-prediction/ HTTP/1.1" 500 190
+INFO 2025-05-19 02:16:41,185 autoreload 16952 22992 Watching for file changes with StatReloader
+INFO 2025-05-19 02:16:46,506 basehttp 16952 19928 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 02:16:50,055 basehttp 16952 19928 "POST /calculate-prediction/ HTTP/1.1" 500 190
+INFO 2025-05-19 02:17:15,373 autoreload 16952 22992 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:17:16,482 autoreload 21188 17072 Watching for file changes with StatReloader
+INFO 2025-05-19 02:17:22,297 basehttp 21188 10420 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 02:17:24,638 basehttp 21188 10420 "POST /calculate-prediction/ HTTP/1.1" 500 190
+INFO 2025-05-19 02:19:31,426 autoreload 21188 17072 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:19:32,434 autoreload 8740 20984 Watching for file changes with StatReloader
+INFO 2025-05-19 02:19:36,956 autoreload 8740 20984 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:19:38,041 autoreload 2860 16520 Watching for file changes with StatReloader
+INFO 2025-05-19 02:20:19,899 autoreload 18620 17332 Watching for file changes with StatReloader
+INFO 2025-05-19 02:20:27,270 basehttp 18620 1776 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 02:20:31,209 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:20:41,952 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:20:52,964 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:20:59,342 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:21:17,529 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:21:24,223 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:21:40,930 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:22:01,094 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:22:12,763 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:22:19,987 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:24:04,378 basehttp 18620 1776 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 02:24:10,388 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:24:26,692 basehttp 18620 1776 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:31:56,732 autoreload 18620 17332 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:31:57,806 autoreload 23188 3972 Watching for file changes with StatReloader
+INFO 2025-05-19 02:32:29,731 basehttp 23188 4932 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 02:32:34,679 basehttp 23188 4932 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:36:08,088 autoreload 23188 3972 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:36:09,170 autoreload 17696 12648 Watching for file changes with StatReloader
+INFO 2025-05-19 02:37:02,133 autoreload 17572 21864 Watching for file changes with StatReloader
+INFO 2025-05-19 02:37:08,730 basehttp 17572 1052 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 02:37:13,883 basehttp 17572 1052 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:38:29,723 basehttp 17572 1052 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:38:40,223 basehttp 17572 1052 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:38:47,485 basehttp 17572 1052 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:44:59,050 autoreload 17572 21864 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:45:00,127 autoreload 20884 16156 Watching for file changes with StatReloader
+INFO 2025-05-19 02:45:44,331 autoreload 12468 4960 Watching for file changes with StatReloader
+INFO 2025-05-19 02:46:07,640 basehttp 12468 12660 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 02:46:11,635 basehttp 12468 12660 "POST /calculate-prediction/ HTTP/1.1" 500 190
+INFO 2025-05-19 02:49:58,408 autoreload 12808 17536 Watching for file changes with StatReloader
+INFO 2025-05-19 02:50:05,488 basehttp 12808 15560 "GET / HTTP/1.1" 200 26489
+ERROR 2025-05-19 02:50:10,224 basehttp 12808 15560 "POST /calculate-prediction/ HTTP/1.1" 500 190
+INFO 2025-05-19 02:54:54,673 autoreload 12808 17536 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:54:55,800 autoreload 15868 14924 Watching for file changes with StatReloader
+INFO 2025-05-19 02:55:24,228 autoreload 15868 14924 C:\Projects\restateval\analytics\ml_models.py changed, reloading.
+INFO 2025-05-19 02:55:25,295 autoreload 11520 6552 Watching for file changes with StatReloader
+INFO 2025-05-19 02:56:32,176 autoreload 6408 4832 Watching for file changes with StatReloader
+INFO 2025-05-19 02:56:40,260 basehttp 6408 9960 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 02:56:43,741 basehttp 6408 9960 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:56:49,276 basehttp 6408 9960 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:56:54,754 basehttp 6408 9960 "POST /calculate-prediction/ HTTP/1.1" 200 1412
+INFO 2025-05-19 02:58:14,686 basehttp 6408 9960 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 02:58:18,341 basehttp 6408 9960 "POST /calculate-prediction/ HTTP/1.1" 200 1415
+INFO 2025-05-19 12:57:32,779 basehttp 6408 20552 "GET / HTTP/1.1" 200 26489
+INFO 2025-05-19 12:57:37,982 basehttp 6408 20552 "POST /calculate-prediction/ HTTP/1.1" 200 1414
+INFO 2025-05-19 12:57:46,191 basehttp 6408 20552 "POST /calculate-prediction/ HTTP/1.1" 200 1413
+INFO 2025-05-19 12:57:52,285 basehttp 6408 20552 "POST /calculate-prediction/ HTTP/1.1" 200 1418

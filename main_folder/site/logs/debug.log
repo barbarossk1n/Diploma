@@ -1,0 +1,2260 @@
+DEBUG 2025-05-18 11:17:09,478 views 11080 1640 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 11:17:09,478 views 11080 1640 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['2D4WdgznoSrwz9DrCbrxqMHUN0aw3HkBdOjGs5SWP55vMySQ4az7sl0uv4pCjigz'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.8033391392929'], 'location_lng': ['37.629837633911514'], 'location_address': ['Москва, Северо-Восточный административный округ, Останкинский район']}>
+DEBUG 2025-05-18 11:17:09,478 views 11080 1640 Значение поля location_lat: 55.8033391392929
+DEBUG 2025-05-18 11:17:09,478 views 11080 1640 Значение поля location_lng: 37.629837633911514
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Значение поля location_address: Москва, Северо-Восточный административный округ, Останкинский район
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Значение поля floor: 10
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Значение поля property_type: квартира
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Значение поля property_class: 1
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Значение поля purchase_month: 1
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Преобразованные данные: lat=55.8033391392929, lng=37.629837633911514, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 11:17:09,494 views 11080 1640 Создание объекта недвижимости
+ERROR 2025-05-18 11:17:09,512 views 11080 1640 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("location_address", "latitude", "l...
+                                  ^
+
+ERROR 2025-05-18 11:17:09,701 views 11080 1640 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("location_address", "latitude", "l...
+                                  ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 99, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("location_address", "latitude", "l...
+                                  ^
+
+
+DEBUG 2025-05-18 12:05:37,599 views 20720 22136 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 12:05:37,599 views 20720 22136 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['TS5g2uUCqdKPSdLdJR4b4O2OTmM4n6sS43k0hjdbRqoO5C0CbQcL6nloBq1aDHoQ'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.747608519448754'], 'location_lng': ['37.5419470089115'], 'location_address': ['Москва, Центральный административный округ, Пресненский район, Московский международный деловой центр Москва-Сити']}>
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля location_lat: 55.747608519448754
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля location_lng: 37.5419470089115
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля location_address: Москва, Центральный административный округ, Пресненский район, Московский международный деловой центр Москва-Сити
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля floor: 10
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля property_type: квартира
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля property_class: 1
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля purchase_month: 1
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Преобразованные данные: lat=55.747608519448754, lng=37.5419470089115, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 12:05:37,615 views 20720 22136 Создание объекта недвижимости
+ERROR 2025-05-18 12:05:37,640 views 20720 22136 Ошибка при создании объекта недвижимости: ОШИБКА:  отношение "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                    ^
+
+DEBUG 2025-05-18 12:27:38,678 views 14756 20036 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 12:27:38,678 views 14756 20036 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['aqzSV14n40RCg5U1PzIgGsfGmUW2sVlESypOsh6X5XMmIyo9RHAsyCM3sH5tv6YG'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.8033391392929'], 'location_lng': ['37.720474840942764'], 'location_address': ['Москва, Восточный административный округ, район Преображенское']}>
+DEBUG 2025-05-18 12:27:38,688 views 14756 20036 Значение поля location_lat: 55.8033391392929
+DEBUG 2025-05-18 12:27:38,688 views 14756 20036 Значение поля location_lng: 37.720474840942764
+DEBUG 2025-05-18 12:27:38,690 views 14756 20036 Значение поля location_address: Москва, Восточный административный округ, район Преображенское
+DEBUG 2025-05-18 12:27:38,690 views 14756 20036 Значение поля floor: 10
+DEBUG 2025-05-18 12:27:38,694 views 14756 20036 Значение поля property_type: квартира
+DEBUG 2025-05-18 12:27:38,694 views 14756 20036 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 12:27:38,694 views 14756 20036 Значение поля property_class: 1
+DEBUG 2025-05-18 12:27:38,694 views 14756 20036 Значение поля purchase_month: 1
+DEBUG 2025-05-18 12:27:38,694 views 14756 20036 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 12:27:38,694 views 14756 20036 Преобразованные данные: lat=55.8033391392929, lng=37.720474840942764, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 12:27:38,694 views 14756 20036 Создание объекта недвижимости
+DEBUG 2025-05-18 12:27:38,716 views 14756 20036 Объект недвижимости создан: 1
+DEBUG 2025-05-18 12:27:38,716 views 14756 20036 Создание запроса на прогноз
+DEBUG 2025-05-18 12:27:38,729 views 14756 20036 Запрос на прогноз создан: 1
+DEBUG 2025-05-18 12:27:38,729 views 14756 20036 Генерация прогноза
+INFO 2025-05-18 12:27:38,729 ml_models 14756 20036 Generating prediction for request: 1
+DEBUG 2025-05-18 12:27:38,729 ml_models 14756 20036 Loading model from: C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-18 12:27:39,383 ml_models 14756 20036 Model loaded successfully
+DEBUG 2025-05-18 12:27:39,385 ml_models 14756 20036 Preparing features for property: 1
+DEBUG 2025-05-18 12:27:39,385 ml_models 14756 20036 Basic numeric features: [55.8033391392929, 37.720474840942764, 10]
+DEBUG 2025-05-18 12:27:39,385 ml_models 14756 20036 Property type encoded: 1.0
+DEBUG 2025-05-18 12:27:39,385 ml_models 14756 20036 Finishing type encoded: 0.0
+DEBUG 2025-05-18 12:27:39,385 ml_models 14756 20036 Encoded property class эконом to 1
+DEBUG 2025-05-18 12:27:39,385 ml_models 14756 20036 Property class encoded: 1.0
+DEBUG 2025-05-18 12:27:39,392 ml_models 14756 20036 Final feature vector: [55.8033391392929, 37.720474840942764, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 12:27:39,427 ml_models 14756 20036 Raw prediction: [461536.8]
+INFO 2025-05-18 12:27:39,428 ml_models 14756 20036 Base price prediction: 461536.8125
+INFO 2025-05-18 12:27:39,437 ml_models 14756 20036 Created prediction result: 1 for scenario pessimistic
+ERROR 2025-05-18 12:27:39,440 ml_models 14756 20036 Error creating prediction result for scenario realistic: Object of type float32 is not JSON serializable
+INFO 2025-05-18 12:27:39,445 ml_models 14756 20036 Created prediction result: 2 for scenario optimistic
+INFO 2025-05-18 12:27:39,445 ml_models 14756 20036 Successfully generated 2 prediction results
+DEBUG 2025-05-18 12:27:39,453 views 14756 20036 Прогноз успешно сгенерирован
+ERROR 2025-05-18 12:27:39,453 views 14756 20036 Необработанная ошибка: Object of type PredictionResult is not JSON serializable
+DEBUG 2025-05-18 12:46:19,367 views 19996 15440 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 12:46:19,367 views 19996 15440 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['q85rbbZVA1wEwHvXaj0l18rsmY0ZLep08gVnIr1vBYroYaZ5crSxTiYPsL9qOp22'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.78090169991863'], 'location_lng': ['37.676529528442764'], 'location_address': ['Москва, Леснорядская улица, 10с17']}>
+DEBUG 2025-05-18 12:46:19,367 views 19996 15440 Значение поля location_lat: 55.78090169991863
+DEBUG 2025-05-18 12:46:19,367 views 19996 15440 Значение поля location_lng: 37.676529528442764
+DEBUG 2025-05-18 12:46:19,367 views 19996 15440 Значение поля location_address: Москва, Леснорядская улица, 10с17
+DEBUG 2025-05-18 12:46:19,367 views 19996 15440 Значение поля floor: 10
+DEBUG 2025-05-18 12:46:19,382 views 19996 15440 Значение поля property_type: квартира
+DEBUG 2025-05-18 12:46:19,382 views 19996 15440 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 12:46:19,382 views 19996 15440 Значение поля property_class: 1
+DEBUG 2025-05-18 12:46:19,382 views 19996 15440 Значение поля purchase_month: 1
+DEBUG 2025-05-18 12:46:19,382 views 19996 15440 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 12:46:19,382 views 19996 15440 Преобразованные данные: lat=55.78090169991863, lng=37.676529528442764, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 12:46:19,382 views 19996 15440 Создание объекта недвижимости
+DEBUG 2025-05-18 12:46:19,407 views 19996 15440 Объект недвижимости создан: 2
+DEBUG 2025-05-18 12:46:19,407 views 19996 15440 Создание запроса на прогноз
+DEBUG 2025-05-18 12:46:19,421 views 19996 15440 Запрос на прогноз создан: 2
+DEBUG 2025-05-18 12:46:19,421 views 19996 15440 Генерация прогноза
+INFO 2025-05-18 12:46:19,421 ml_models 19996 15440 Generating prediction for request: 2
+DEBUG 2025-05-18 12:46:19,421 ml_models 19996 15440 Loading model from: C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-18 12:46:20,133 ml_models 19996 15440 Model loaded successfully
+DEBUG 2025-05-18 12:46:20,133 ml_models 19996 15440 Preparing features for property: 2
+DEBUG 2025-05-18 12:46:20,133 ml_models 19996 15440 Basic numeric features: [55.78090169991863, 37.676529528442764, 10]
+DEBUG 2025-05-18 12:46:20,133 ml_models 19996 15440 Property type encoded: 1.0
+DEBUG 2025-05-18 12:46:20,133 ml_models 19996 15440 Finishing type encoded: 0.0
+DEBUG 2025-05-18 12:46:20,133 ml_models 19996 15440 Encoded property class эконом to 1
+DEBUG 2025-05-18 12:46:20,133 ml_models 19996 15440 Property class encoded: 1.0
+DEBUG 2025-05-18 12:46:20,133 ml_models 19996 15440 Final feature vector: [55.78090169991863, 37.676529528442764, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 12:46:20,152 ml_models 19996 15440 Raw prediction: [461536.8]
+INFO 2025-05-18 12:46:20,152 ml_models 19996 15440 Base price prediction: 461536.8125
+INFO 2025-05-18 12:46:20,174 ml_models 19996 15440 Created prediction result: 3 for scenario pessimistic
+ERROR 2025-05-18 12:46:20,176 ml_models 19996 15440 Error creating prediction result for scenario realistic: Object of type float32 is not JSON serializable
+INFO 2025-05-18 12:46:20,180 ml_models 19996 15440 Created prediction result: 4 for scenario optimistic
+INFO 2025-05-18 12:46:20,182 ml_models 19996 15440 Successfully generated 2 prediction results
+DEBUG 2025-05-18 12:46:20,190 views 19996 15440 Прогноз успешно сгенерирован
+DEBUG 2025-05-18 12:48:54,953 views 11900 6484 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 12:48:54,953 views 11900 6484 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['i36oD1vyN9AzVoGLobtMRvNJkwYTQs070bWkahx8O6vjnRaTqjlYJFk6qj7kTDD9'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.78090172353706'], 'location_lng': ['37.61198485070839'], 'location_address': ['Москва, Селезнёвская улица, 32']}>
+DEBUG 2025-05-18 12:48:54,953 views 11900 6484 Значение поля location_lat: 55.78090172353706
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Значение поля location_lng: 37.61198485070839
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Значение поля location_address: Москва, Селезнёвская улица, 32
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Значение поля floor: 10
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Значение поля property_type: квартира
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Значение поля property_class: 1
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Значение поля purchase_month: 1
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 12:48:54,968 views 11900 6484 Преобразованные данные: lat=55.78090172353706, lng=37.61198485070839, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 12:48:54,983 views 11900 6484 Создание объекта недвижимости
+DEBUG 2025-05-18 12:48:55,006 views 11900 6484 Объект недвижимости создан: 3
+DEBUG 2025-05-18 12:48:55,006 views 11900 6484 Создание запроса на прогноз
+DEBUG 2025-05-18 12:48:55,008 views 11900 6484 Запрос на прогноз создан: 3
+DEBUG 2025-05-18 12:48:55,008 views 11900 6484 Генерация прогноза
+INFO 2025-05-18 12:48:55,016 ml_models 11900 6484 Generating prediction for request: 3
+DEBUG 2025-05-18 12:48:55,016 ml_models 11900 6484 Loading model from: C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-18 12:48:55,660 ml_models 11900 6484 Model loaded successfully
+DEBUG 2025-05-18 12:48:55,662 ml_models 11900 6484 Preparing features for property: 3
+DEBUG 2025-05-18 12:48:55,664 ml_models 11900 6484 Basic numeric features: [55.78090172353706, 37.61198485070839, 10]
+DEBUG 2025-05-18 12:48:55,664 ml_models 11900 6484 Property type encoded: 1.0
+DEBUG 2025-05-18 12:48:55,666 ml_models 11900 6484 Finishing type encoded: 0.0
+DEBUG 2025-05-18 12:48:55,666 ml_models 11900 6484 Encoded property class эконом to 1
+DEBUG 2025-05-18 12:48:55,666 ml_models 11900 6484 Property class encoded: 1.0
+DEBUG 2025-05-18 12:48:55,666 ml_models 11900 6484 Final feature vector: [55.78090172353706, 37.61198485070839, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 12:48:55,680 ml_models 11900 6484 Raw prediction: [461536.8]
+INFO 2025-05-18 12:48:55,680 ml_models 11900 6484 Base price prediction: 461536.8125
+INFO 2025-05-18 12:48:55,706 ml_models 11900 6484 Created prediction result: 5 for scenario pessimistic
+ERROR 2025-05-18 12:48:55,708 ml_models 11900 6484 Error creating prediction result for scenario realistic: Object of type float32 is not JSON serializable
+INFO 2025-05-18 12:48:55,714 ml_models 11900 6484 Created prediction result: 6 for scenario optimistic
+INFO 2025-05-18 12:48:55,714 ml_models 11900 6484 Successfully generated 2 prediction results
+DEBUG 2025-05-18 12:48:55,723 views 11900 6484 Прогноз успешно сгенерирован
+DEBUG 2025-05-18 12:51:04,287 views 11900 6484 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 12:51:04,287 views 11900 6484 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['ckJauX2WevPLrv22VhPW5qAgjxPl0pRlUsz61d4wfsKvTYwaXpH8XA7DpkYM3Aun'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.793282581980534'], 'location_lng': ['37.6847692745365'], 'location_address': ['Москва, Егерская улица, 4']}>
+DEBUG 2025-05-18 12:51:04,287 views 11900 6484 Значение поля location_lat: 55.793282581980534
+DEBUG 2025-05-18 12:51:04,287 views 11900 6484 Значение поля location_lng: 37.6847692745365
+DEBUG 2025-05-18 12:51:04,287 views 11900 6484 Значение поля location_address: Москва, Егерская улица, 4
+DEBUG 2025-05-18 12:51:04,287 views 11900 6484 Значение поля floor: 10
+DEBUG 2025-05-18 12:51:04,287 views 11900 6484 Значение поля property_type: квартира
+DEBUG 2025-05-18 12:51:04,287 views 11900 6484 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 12:51:04,303 views 11900 6484 Значение поля property_class: 1
+DEBUG 2025-05-18 12:51:04,303 views 11900 6484 Значение поля purchase_month: 1
+DEBUG 2025-05-18 12:51:04,303 views 11900 6484 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 12:51:04,303 views 11900 6484 Преобразованные данные: lat=55.793282581980534, lng=37.6847692745365, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 12:51:04,303 views 11900 6484 Создание объекта недвижимости
+DEBUG 2025-05-18 12:51:04,325 views 11900 6484 Объект недвижимости создан: 4
+DEBUG 2025-05-18 12:51:04,325 views 11900 6484 Создание запроса на прогноз
+DEBUG 2025-05-18 12:51:04,335 views 11900 6484 Запрос на прогноз создан: 4
+DEBUG 2025-05-18 12:51:04,335 views 11900 6484 Генерация прогноза
+INFO 2025-05-18 12:51:04,335 ml_models 11900 6484 Generating prediction for request: 4
+DEBUG 2025-05-18 12:51:04,335 ml_models 11900 6484 Loading model from: C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-18 12:51:04,963 ml_models 11900 6484 Model loaded successfully
+DEBUG 2025-05-18 12:51:04,963 ml_models 11900 6484 Preparing features for property: 4
+DEBUG 2025-05-18 12:51:04,963 ml_models 11900 6484 Basic numeric features: [55.793282581980534, 37.6847692745365, 10]
+DEBUG 2025-05-18 12:51:04,963 ml_models 11900 6484 Property type encoded: 1.0
+DEBUG 2025-05-18 12:51:04,979 ml_models 11900 6484 Finishing type encoded: 0.0
+DEBUG 2025-05-18 12:51:04,979 ml_models 11900 6484 Encoded property class эконом to 1
+DEBUG 2025-05-18 12:51:04,979 ml_models 11900 6484 Property class encoded: 1.0
+DEBUG 2025-05-18 12:51:04,979 ml_models 11900 6484 Final feature vector: [55.793282581980534, 37.6847692745365, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 12:51:04,990 ml_models 11900 6484 Raw prediction: [461536.8]
+INFO 2025-05-18 12:51:04,992 ml_models 11900 6484 Base price prediction: 461536.8125
+INFO 2025-05-18 12:51:05,013 ml_models 11900 6484 Created prediction result: 7 for scenario pessimistic
+ERROR 2025-05-18 12:51:05,015 ml_models 11900 6484 Error creating prediction result for scenario realistic: Object of type float32 is not JSON serializable
+INFO 2025-05-18 12:51:05,020 ml_models 11900 6484 Created prediction result: 8 for scenario optimistic
+INFO 2025-05-18 12:51:05,020 ml_models 11900 6484 Successfully generated 2 prediction results
+DEBUG 2025-05-18 12:51:05,029 views 11900 6484 Прогноз успешно сгенерирован
+DEBUG 2025-05-18 13:38:21,745 views 17388 6280 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 13:38:21,745 views 17388 6280 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['bw9ED7JKbp1o8l00P29J7adMkXZx7bUETEZAanLkcmW8AOu8Ra1VZkK9qK8YamxG'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.804886094072245'], 'location_lng': ['37.59825194055214'], 'location_address': ['Москва, Складочная улица']}>
+DEBUG 2025-05-18 13:38:21,759 views 17388 6280 Значение поля location_lat: 55.804886094072245
+DEBUG 2025-05-18 13:38:21,761 views 17388 6280 Значение поля location_lng: 37.59825194055214
+DEBUG 2025-05-18 13:38:21,761 views 17388 6280 Значение поля location_address: Москва, Складочная улица
+DEBUG 2025-05-18 13:38:21,761 views 17388 6280 Значение поля floor: 10
+DEBUG 2025-05-18 13:38:21,761 views 17388 6280 Значение поля property_type: квартира
+DEBUG 2025-05-18 13:38:21,761 views 17388 6280 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 13:38:21,761 views 17388 6280 Значение поля property_class: 1
+DEBUG 2025-05-18 13:38:21,761 views 17388 6280 Значение поля purchase_month: 1
+DEBUG 2025-05-18 13:38:21,775 views 17388 6280 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 13:38:21,775 views 17388 6280 Преобразованные данные: lat=55.804886094072245, lng=37.59825194055214, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 13:38:21,775 views 17388 6280 Создание объекта недвижимости
+DEBUG 2025-05-18 13:38:21,794 views 17388 6280 Объект недвижимости создан: 5
+DEBUG 2025-05-18 13:38:21,794 views 17388 6280 Создание запроса на прогноз
+DEBUG 2025-05-18 13:38:21,806 views 17388 6280 Запрос на прогноз создан: 5
+DEBUG 2025-05-18 13:38:21,806 views 17388 6280 Генерация прогноза
+INFO 2025-05-18 13:38:21,806 ml_models 17388 6280 Starting prediction generation for request: 5
+INFO 2025-05-18 13:38:22,442 ml_models 17388 6280 XGBoost model successfully loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+DEBUG 2025-05-18 13:38:22,443 ml_models 17388 6280 Preparing features for property: 5
+DEBUG 2025-05-18 13:38:22,445 ml_models 17388 6280 Coordinates validated: lat=55.804886094072245, lon=37.59825194055214, floor=10
+DEBUG 2025-05-18 13:38:22,445 ml_models 17388 6280 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-18 13:38:22,448 ml_models 17388 6280 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-18 13:38:22,448 ml_models 17388 6280 Features: [55.804886094072245, 37.59825194055214, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 13:38:22,461 ml_models 17388 6280 Model prediction: [461536.8]
+INFO 2025-05-18 13:38:22,461 ml_models 17388 6280 Base price predicted: 461,536.81
+INFO 2025-05-18 13:38:22,488 ml_models 17388 6280 Created prediction result: 9 for scenario pessimistic
+INFO 2025-05-18 13:38:22,492 ml_models 17388 6280 Created prediction result: 10 for scenario realistic
+INFO 2025-05-18 13:38:22,496 ml_models 17388 6280 Created prediction result: 11 for scenario optimistic
+INFO 2025-05-18 13:38:22,496 ml_models 17388 6280 Successfully generated 3 prediction results
+DEBUG 2025-05-18 13:38:22,502 views 17388 6280 Сериализованные результаты: [OrderedDict({'id': 9, 'scenario_type': 'pessimistic', 'predicted_price': 415383.13125000003, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [394613.97, 402921.64, 411229.3, 415383.13, 423690.79, 431998.46]}, 'created_at': '2025-05-18T13:38:22.482995'}), OrderedDict({'id': 10, 'scenario_type': 'realistic', 'predicted_price': 461536.8125, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [438459.97, 447690.71, 456921.44, 461536.81, 470767.55, 479998.29]}, 'created_at': '2025-05-18T13:38:22.490554'}), OrderedDict({'id': 11, 'scenario_type': 'optimistic', 'predicted_price': 507690.49375, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [482305.97, 492459.78, 502613.59, 507690.49, 517844.3, 527998.11]}, 'created_at': '2025-05-18T13:38:22.492575'})]
+INFO 2025-05-18 13:38:22,505 views 17388 6280 Подготовлен ответ: {
+  "success": true,
+  "prediction_id": 5,
+  "results": [
+    {
+      "id": 9,
+      "scenario_type": "pessimistic",
+      "predicted_price": 415383.13125000003,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          394613.97,
+          402921.64,
+          411229.3,
+          415383.13,
+          423690.79,
+          431998.46
+        ]
+      },
+      "created_at": "2025-05-18T13:38:22.482995"
+    },
+    {
+      "id": 10,
+      "scenario_type": "realistic",
+      "predicted_price": 461536.8125,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          438459.97,
+          447690.71,
+          456921.44,
+          461536.81,
+          470767.55,
+          479998.29
+        ]
+      },
+      "created_at": "2025-05-18T13:38:22.490554"
+    },
+    {
+      "id": 11,
+      "scenario_type": "optimistic",
+      "predicted_price": 507690.49375,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          482305.97,
+          492459.78,
+          502613.59,
+          507690.49,
+          517844.3,
+          527998.11
+        ]
+      },
+      "created_at": "2025-05-18T13:38:22.492575"
+    }
+  ]
+}
+DEBUG 2025-05-18 13:39:49,714 views 4356 15632 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 13:39:49,714 views 4356 15632 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['uHGNvFFhsPt1tyCAXz25TWJ8ecgwfnQBcPwJ2VHRtMoLV16IZHUhL6gvkZpXiytD'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.78167564443451'], 'location_lng': ['37.613358141724014'], 'location_address': ['Москва, Центральный административный округ, Тверской район']}>
+DEBUG 2025-05-18 13:39:49,714 views 4356 15632 Значение поля location_lat: 55.78167564443451
+DEBUG 2025-05-18 13:39:49,721 views 4356 15632 Значение поля location_lng: 37.613358141724014
+DEBUG 2025-05-18 13:39:49,721 views 4356 15632 Значение поля location_address: Москва, Центральный административный округ, Тверской район
+DEBUG 2025-05-18 13:39:49,721 views 4356 15632 Значение поля floor: 10
+DEBUG 2025-05-18 13:39:49,721 views 4356 15632 Значение поля property_type: квартира
+DEBUG 2025-05-18 13:39:49,721 views 4356 15632 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 13:39:49,721 views 4356 15632 Значение поля property_class: 1
+DEBUG 2025-05-18 13:39:49,721 views 4356 15632 Значение поля purchase_month: 1
+DEBUG 2025-05-18 13:39:49,730 views 4356 15632 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 13:39:49,730 views 4356 15632 Преобразованные данные: lat=55.78167564443451, lng=37.613358141724014, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 13:39:49,730 views 4356 15632 Создание объекта недвижимости
+DEBUG 2025-05-18 13:39:49,753 views 4356 15632 Объект недвижимости создан: 6
+DEBUG 2025-05-18 13:39:49,753 views 4356 15632 Создание запроса на прогноз
+DEBUG 2025-05-18 13:39:49,753 views 4356 15632 Запрос на прогноз создан: 6
+DEBUG 2025-05-18 13:39:49,753 views 4356 15632 Генерация прогноза
+INFO 2025-05-18 13:39:49,763 ml_models 4356 15632 Starting prediction generation for request: 6
+INFO 2025-05-18 13:39:50,377 ml_models 4356 15632 XGBoost model successfully loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+DEBUG 2025-05-18 13:39:50,378 ml_models 4356 15632 Preparing features for property: 6
+DEBUG 2025-05-18 13:39:50,380 ml_models 4356 15632 Coordinates validated: lat=55.78167564443451, lon=37.613358141724014, floor=10
+DEBUG 2025-05-18 13:39:50,380 ml_models 4356 15632 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-18 13:39:50,384 ml_models 4356 15632 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-18 13:39:50,384 ml_models 4356 15632 Features: [55.78167564443451, 37.613358141724014, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 13:39:50,399 ml_models 4356 15632 Model prediction: [461536.8]
+INFO 2025-05-18 13:39:50,400 ml_models 4356 15632 Base price predicted: 461,536.81
+INFO 2025-05-18 13:39:50,422 ml_models 4356 15632 Created prediction result: 12 for scenario pessimistic
+INFO 2025-05-18 13:39:50,430 ml_models 4356 15632 Created prediction result: 13 for scenario realistic
+INFO 2025-05-18 13:39:50,435 ml_models 4356 15632 Created prediction result: 14 for scenario optimistic
+INFO 2025-05-18 13:39:50,436 ml_models 4356 15632 Successfully generated 3 prediction results
+DEBUG 2025-05-18 13:39:50,445 views 4356 15632 Сериализованные результаты: [OrderedDict({'id': 12, 'scenario_type': 'pessimistic', 'predicted_price': 415383.13125000003, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [394613.97, 402921.64, 411229.3, 415383.13, 423690.79, 431998.46]}, 'created_at': '2025-05-18T13:39:50.404393'}), OrderedDict({'id': 13, 'scenario_type': 'realistic', 'predicted_price': 461536.8125, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [438459.97, 447690.71, 456921.44, 461536.81, 470767.55, 479998.29]}, 'created_at': '2025-05-18T13:39:50.427191'}), OrderedDict({'id': 14, 'scenario_type': 'optimistic', 'predicted_price': 507690.49375, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [482305.97, 492459.78, 502613.59, 507690.49, 517844.3, 527998.11]}, 'created_at': '2025-05-18T13:39:50.433162'})]
+INFO 2025-05-18 13:39:50,447 views 4356 15632 Подготовлен ответ: {
+  "success": true,
+  "prediction_id": 6,
+  "results": [
+    {
+      "id": 12,
+      "scenario_type": "pessimistic",
+      "predicted_price": 415383.13125000003,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          394613.97,
+          402921.64,
+          411229.3,
+          415383.13,
+          423690.79,
+          431998.46
+        ]
+      },
+      "created_at": "2025-05-18T13:39:50.404393"
+    },
+    {
+      "id": 13,
+      "scenario_type": "realistic",
+      "predicted_price": 461536.8125,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          438459.97,
+          447690.71,
+          456921.44,
+          461536.81,
+          470767.55,
+          479998.29
+        ]
+      },
+      "created_at": "2025-05-18T13:39:50.427191"
+    },
+    {
+      "id": 14,
+      "scenario_type": "optimistic",
+      "predicted_price": 507690.49375,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          482305.97,
+          492459.78,
+          502613.59,
+          507690.49,
+          517844.3,
+          527998.11
+        ]
+      },
+      "created_at": "2025-05-18T13:39:50.433162"
+    }
+  ]
+}
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['O6HmYbZj7RQdezBCbBzIM2uqHYo3RRNvwexivr1T8OLXG25KdJrUEc1NNLxuU2qx'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.72513884034907'], 'location_lng': ['37.63258421594276'], 'location_address': ['Москва, 1-й Щипковский переулок, 25']}>
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 Значение поля location_lat: 55.72513884034907
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 Значение поля location_lng: 37.63258421594276
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 Значение поля location_address: Москва, 1-й Щипковский переулок, 25
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 Значение поля floor: 10
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 Значение поля property_type: квартира
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 14:22:35,906 views 4628 20524 Значение поля property_class: 1
+DEBUG 2025-05-18 14:22:35,922 views 4628 20524 Значение поля purchase_month: 1
+DEBUG 2025-05-18 14:22:35,922 views 4628 20524 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 14:22:35,922 views 4628 20524 Преобразованные данные: lat=55.72513884034907, lng=37.63258421594276, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 14:22:35,922 views 4628 20524 Создание объекта недвижимости
+DEBUG 2025-05-18 14:22:35,942 views 4628 20524 Объект недвижимости создан: 7
+DEBUG 2025-05-18 14:22:35,942 views 4628 20524 Создание запроса на прогноз
+DEBUG 2025-05-18 14:22:35,956 views 4628 20524 Запрос на прогноз создан: 7
+DEBUG 2025-05-18 14:22:35,956 views 4628 20524 Генерация прогноза
+INFO 2025-05-18 14:22:35,956 ml_models 4628 20524 Starting prediction generation for request: 7
+INFO 2025-05-18 14:22:36,668 ml_models 4628 20524 XGBoost model successfully loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+DEBUG 2025-05-18 14:22:36,668 ml_models 4628 20524 Preparing features for property: 7
+DEBUG 2025-05-18 14:22:36,668 ml_models 4628 20524 Coordinates validated: lat=55.72513884034907, lon=37.63258421594276, floor=10
+DEBUG 2025-05-18 14:22:36,668 ml_models 4628 20524 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-18 14:22:36,668 ml_models 4628 20524 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-18 14:22:36,668 ml_models 4628 20524 Features: [55.72513884034907, 37.63258421594276, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 14:22:36,687 ml_models 4628 20524 Model prediction: [461536.8]
+INFO 2025-05-18 14:22:36,689 ml_models 4628 20524 Base price predicted: 461,536.81
+INFO 2025-05-18 14:22:36,715 ml_models 4628 20524 Created prediction result: 15 for scenario pessimistic
+INFO 2025-05-18 14:22:36,723 ml_models 4628 20524 Created prediction result: 16 for scenario realistic
+INFO 2025-05-18 14:22:36,727 ml_models 4628 20524 Created prediction result: 17 for scenario optimistic
+INFO 2025-05-18 14:22:36,727 ml_models 4628 20524 Successfully generated 3 prediction results
+DEBUG 2025-05-18 14:22:36,736 views 4628 20524 Сериализованные результаты: [OrderedDict({'id': 15, 'scenario_type': 'pessimistic', 'predicted_price': 415383.13125000003, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [394613.97, 402921.64, 411229.3, 415383.13, 423690.79, 431998.46]}, 'created_at': '2025-05-18T14:22:36.695820'}), OrderedDict({'id': 16, 'scenario_type': 'realistic', 'predicted_price': 461536.8125, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [438459.97, 447690.71, 456921.44, 461536.81, 470767.55, 479998.29]}, 'created_at': '2025-05-18T14:22:36.721026'}), OrderedDict({'id': 17, 'scenario_type': 'optimistic', 'predicted_price': 507690.49375, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [482305.97, 492459.78, 502613.59, 507690.49, 517844.3, 527998.11]}, 'created_at': '2025-05-18T14:22:36.725012'})]
+INFO 2025-05-18 14:22:36,738 views 4628 20524 Подготовлен ответ: {
+  "success": true,
+  "prediction_id": 7,
+  "results": [
+    {
+      "id": 15,
+      "scenario_type": "pessimistic",
+      "predicted_price": 415383.13125000003,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          394613.97,
+          402921.64,
+          411229.3,
+          415383.13,
+          423690.79,
+          431998.46
+        ]
+      },
+      "created_at": "2025-05-18T14:22:36.695820"
+    },
+    {
+      "id": 16,
+      "scenario_type": "realistic",
+      "predicted_price": 461536.8125,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          438459.97,
+          447690.71,
+          456921.44,
+          461536.81,
+          470767.55,
+          479998.29
+        ]
+      },
+      "created_at": "2025-05-18T14:22:36.721026"
+    },
+    {
+      "id": 17,
+      "scenario_type": "optimistic",
+      "predicted_price": 507690.49375,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          482305.97,
+          492459.78,
+          502613.59,
+          507690.49,
+          517844.3,
+          527998.11
+        ]
+      },
+      "created_at": "2025-05-18T14:22:36.725012"
+    }
+  ]
+}
+DEBUG 2025-05-18 14:34:58,581 views 4628 12104 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 14:34:58,582 views 4628 12104 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['O6HmYbZj7RQdezBCbBzIM2uqHYo3RRNvwexivr1T8OLXG25KdJrUEc1NNLxuU2qx'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.77548384501396'], 'location_lng': ['37.669663073364624'], 'location_address': ['Москва, Ольховская улица, 27']}>
+DEBUG 2025-05-18 14:34:58,585 views 4628 12104 Значение поля location_lat: 55.77548384501396
+DEBUG 2025-05-18 14:34:58,587 views 4628 12104 Значение поля location_lng: 37.669663073364624
+DEBUG 2025-05-18 14:34:58,588 views 4628 12104 Значение поля location_address: Москва, Ольховская улица, 27
+DEBUG 2025-05-18 14:34:58,589 views 4628 12104 Значение поля floor: 10
+DEBUG 2025-05-18 14:34:58,589 views 4628 12104 Значение поля property_type: квартира
+DEBUG 2025-05-18 14:34:58,593 views 4628 12104 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 14:34:58,593 views 4628 12104 Значение поля property_class: 1
+DEBUG 2025-05-18 14:34:58,593 views 4628 12104 Значение поля purchase_month: 1
+DEBUG 2025-05-18 14:34:58,595 views 4628 12104 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 14:34:58,595 views 4628 12104 Преобразованные данные: lat=55.77548384501396, lng=37.669663073364624, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 14:34:58,595 views 4628 12104 Создание объекта недвижимости
+DEBUG 2025-05-18 14:34:58,595 views 4628 12104 Объект недвижимости создан: 8
+DEBUG 2025-05-18 14:34:58,595 views 4628 12104 Создание запроса на прогноз
+DEBUG 2025-05-18 14:34:58,611 views 4628 12104 Запрос на прогноз создан: 8
+DEBUG 2025-05-18 14:34:58,611 views 4628 12104 Генерация прогноза
+INFO 2025-05-18 14:34:58,611 ml_models 4628 12104 Starting prediction generation for request: 8
+INFO 2025-05-18 14:34:59,326 ml_models 4628 12104 XGBoost model successfully loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+DEBUG 2025-05-18 14:34:59,326 ml_models 4628 12104 Preparing features for property: 8
+DEBUG 2025-05-18 14:34:59,326 ml_models 4628 12104 Coordinates validated: lat=55.77548384501396, lon=37.669663073364624, floor=10
+DEBUG 2025-05-18 14:34:59,326 ml_models 4628 12104 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-18 14:34:59,342 ml_models 4628 12104 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-18 14:34:59,342 ml_models 4628 12104 Features: [55.77548384501396, 37.669663073364624, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 14:34:59,351 ml_models 4628 12104 Model prediction: [461536.8]
+INFO 2025-05-18 14:34:59,353 ml_models 4628 12104 Base price predicted: 461,536.81
+INFO 2025-05-18 14:34:59,378 ml_models 4628 12104 Created prediction result: 18 for scenario pessimistic
+INFO 2025-05-18 14:34:59,386 ml_models 4628 12104 Created prediction result: 19 for scenario realistic
+INFO 2025-05-18 14:34:59,390 ml_models 4628 12104 Created prediction result: 20 for scenario optimistic
+INFO 2025-05-18 14:34:59,390 ml_models 4628 12104 Successfully generated 3 prediction results
+DEBUG 2025-05-18 14:34:59,398 views 4628 12104 Сериализованные результаты: [OrderedDict({'id': 18, 'scenario_type': 'pessimistic', 'predicted_price': 415383.13125000003, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [394613.97, 402921.64, 411229.3, 415383.13, 423690.79, 431998.46]}, 'created_at': '2025-05-18T14:34:59.357673'}), OrderedDict({'id': 19, 'scenario_type': 'realistic', 'predicted_price': 461536.8125, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [438459.97, 447690.71, 456921.44, 461536.81, 470767.55, 479998.29]}, 'created_at': '2025-05-18T14:34:59.384516'}), OrderedDict({'id': 20, 'scenario_type': 'optimistic', 'predicted_price': 507690.49375, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [482305.97, 492459.78, 502613.59, 507690.49, 517844.3, 527998.11]}, 'created_at': '2025-05-18T14:34:59.388534'})]
+INFO 2025-05-18 14:34:59,400 views 4628 12104 Подготовлен ответ: {
+  "success": true,
+  "prediction_id": 8,
+  "results": [
+    {
+      "id": 18,
+      "scenario_type": "pessimistic",
+      "predicted_price": 415383.13125000003,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          394613.97,
+          402921.64,
+          411229.3,
+          415383.13,
+          423690.79,
+          431998.46
+        ]
+      },
+      "created_at": "2025-05-18T14:34:59.357673"
+    },
+    {
+      "id": 19,
+      "scenario_type": "realistic",
+      "predicted_price": 461536.8125,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          438459.97,
+          447690.71,
+          456921.44,
+          461536.81,
+          470767.55,
+          479998.29
+        ]
+      },
+      "created_at": "2025-05-18T14:34:59.384516"
+    },
+    {
+      "id": 20,
+      "scenario_type": "optimistic",
+      "predicted_price": 507690.49375,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          482305.97,
+          492459.78,
+          502613.59,
+          507690.49,
+          517844.3,
+          527998.11
+        ]
+      },
+      "created_at": "2025-05-18T14:34:59.388534"
+    }
+  ]
+}
+DEBUG 2025-05-18 14:58:52,375 views 4628 16444 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 14:58:52,381 views 4628 16444 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['2wAp8xaad1woX77q4oB6oAHRlI5hnd3QKEqlFNcKeYr8pABy6wtigKeerveIqoGS'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.805660'], 'location_lng': ['37.587266'], 'location_address': ['Москва, Савёловская линия, 23']}>
+DEBUG 2025-05-18 14:58:52,381 views 4628 16444 Значение поля location_lat: 55.805660
+DEBUG 2025-05-18 14:58:52,381 views 4628 16444 Значение поля location_lng: 37.587266
+DEBUG 2025-05-18 14:58:52,381 views 4628 16444 Значение поля location_address: Москва, Савёловская линия, 23
+DEBUG 2025-05-18 14:58:52,385 views 4628 16444 Значение поля floor: 10
+DEBUG 2025-05-18 14:58:52,385 views 4628 16444 Значение поля property_type: квартира
+DEBUG 2025-05-18 14:58:52,387 views 4628 16444 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 14:58:52,387 views 4628 16444 Значение поля property_class: 1
+DEBUG 2025-05-18 14:58:52,387 views 4628 16444 Значение поля purchase_month: 1
+DEBUG 2025-05-18 14:58:52,387 views 4628 16444 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 14:58:52,387 views 4628 16444 Преобразованные данные: lat=55.80566, lng=37.587266, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 14:58:52,387 views 4628 16444 Создание объекта недвижимости
+DEBUG 2025-05-18 14:58:52,413 views 4628 16444 Объект недвижимости создан: 9
+DEBUG 2025-05-18 14:58:52,413 views 4628 16444 Создание запроса на прогноз
+DEBUG 2025-05-18 14:58:52,420 views 4628 16444 Запрос на прогноз создан: 9
+DEBUG 2025-05-18 14:58:52,420 views 4628 16444 Генерация прогноза
+INFO 2025-05-18 14:58:52,428 ml_models 4628 16444 Starting prediction generation for request: 9
+INFO 2025-05-18 14:58:53,298 ml_models 4628 16444 XGBoost model successfully loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+DEBUG 2025-05-18 14:58:53,300 ml_models 4628 16444 Preparing features for property: 9
+DEBUG 2025-05-18 14:58:53,302 ml_models 4628 16444 Coordinates validated: lat=55.80566, lon=37.587266, floor=10
+DEBUG 2025-05-18 14:58:53,303 ml_models 4628 16444 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-18 14:58:53,303 ml_models 4628 16444 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-18 14:58:53,303 ml_models 4628 16444 Features: [55.80566, 37.587266, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-18 14:58:53,313 ml_models 4628 16444 Model prediction: [461536.8]
+INFO 2025-05-18 14:58:53,313 ml_models 4628 16444 Base price predicted: 461,536.81
+INFO 2025-05-18 14:58:53,338 ml_models 4628 16444 Created prediction result: 21 for scenario pessimistic
+INFO 2025-05-18 14:58:53,344 ml_models 4628 16444 Created prediction result: 22 for scenario realistic
+INFO 2025-05-18 14:58:53,348 ml_models 4628 16444 Created prediction result: 23 for scenario optimistic
+INFO 2025-05-18 14:58:53,349 ml_models 4628 16444 Successfully generated 3 prediction results
+DEBUG 2025-05-18 14:58:53,357 views 4628 16444 Сериализованные результаты: [OrderedDict({'id': 21, 'scenario_type': 'pessimistic', 'predicted_price': 415383.13125000003, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [394613.97, 402921.64, 411229.3, 415383.13, 423690.79, 431998.46]}, 'created_at': '2025-05-18T14:58:53.319774'}), OrderedDict({'id': 22, 'scenario_type': 'realistic', 'predicted_price': 461536.8125, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [438459.97, 447690.71, 456921.44, 461536.81, 470767.55, 479998.29]}, 'created_at': '2025-05-18T14:58:53.342247'}), OrderedDict({'id': 23, 'scenario_type': 'optimistic', 'predicted_price': 507690.49375, 'influence_factors': {'location_attractiveness': 30, 'transport_accessibility': 20, 'social_infrastructure': 15, 'location_development': 20, 'macroeconomic': 15}, 'price_dynamics': {'dates': ['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], 'prices': [482305.97, 492459.78, 502613.59, 507690.49, 517844.3, 527998.11]}, 'created_at': '2025-05-18T14:58:53.347681'})]
+INFO 2025-05-18 14:58:53,361 views 4628 16444 Подготовлен ответ: {
+  "success": true,
+  "prediction_id": 9,
+  "results": [
+    {
+      "id": 21,
+      "scenario_type": "pessimistic",
+      "predicted_price": 415383.13125000003,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          394613.97,
+          402921.64,
+          411229.3,
+          415383.13,
+          423690.79,
+          431998.46
+        ]
+      },
+      "created_at": "2025-05-18T14:58:53.319774"
+    },
+    {
+      "id": 22,
+      "scenario_type": "realistic",
+      "predicted_price": 461536.8125,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          438459.97,
+          447690.71,
+          456921.44,
+          461536.81,
+          470767.55,
+          479998.29
+        ]
+      },
+      "created_at": "2025-05-18T14:58:53.342247"
+    },
+    {
+      "id": 23,
+      "scenario_type": "optimistic",
+      "predicted_price": 507690.49375,
+      "influence_factors": {
+        "location_attractiveness": 30,
+        "transport_accessibility": 20,
+        "social_infrastructure": 15,
+        "location_development": 20,
+        "macroeconomic": 15
+      },
+      "price_dynamics": {
+        "dates": [
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "prices": [
+          482305.97,
+          492459.78,
+          502613.59,
+          507690.49,
+          517844.3,
+          527998.11
+        ]
+      },
+      "created_at": "2025-05-18T14:58:53.347681"
+    }
+  ]
+}
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['GHBpF0WQvr4SVRI6Bo7H5gp5qXoDHcLcoPrlcgYqwoZCnkceDwZTXqWswKx4Knoe'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.809527'], 'location_lng': ['37.611985'], 'location_address': ['Москва, Северо-Восточный административный округ, район Марьина Роща']}>
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля location_lat: 55.809527
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля location_lng: 37.611985
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля location_address: Москва, Северо-Восточный административный округ, район Марьина Роща
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля floor: 10
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля property_type: квартира
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля property_class: 1
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля purchase_month: 1
+DEBUG 2025-05-18 15:45:02,046 views 4628 14796 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 15:45:02,060 views 4628 14796 Преобразованные данные: lat=55.809527, lng=37.611985, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 15:45:02,060 views 4628 14796 Создание объекта недвижимости
+ERROR 2025-05-18 15:45:02,067 views 4628 14796 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+ERROR 2025-05-18 15:45:02,069 views 4628 14796 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+DEBUG 2025-05-18 15:45:09,802 views 4628 14796 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 15:45:09,802 views 4628 14796 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['Hehv6jFq43hGE9xs4Jdzg80JRL2h7qiKpm7rDzH050cq6C1A6R5L8ix6XybIaBVM'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.801019'], 'location_lng': ['37.596879'], 'location_address': ['Москва, Складочная улица, 2']}>
+DEBUG 2025-05-18 15:45:09,803 views 4628 14796 Значение поля location_lat: 55.801019
+DEBUG 2025-05-18 15:45:09,804 views 4628 14796 Значение поля location_lng: 37.596879
+DEBUG 2025-05-18 15:45:09,804 views 4628 14796 Значение поля location_address: Москва, Складочная улица, 2
+DEBUG 2025-05-18 15:45:09,804 views 4628 14796 Значение поля floor: 10
+DEBUG 2025-05-18 15:45:09,806 views 4628 14796 Значение поля property_type: квартира
+DEBUG 2025-05-18 15:45:09,806 views 4628 14796 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 15:45:09,806 views 4628 14796 Значение поля property_class: 1
+DEBUG 2025-05-18 15:45:09,807 views 4628 14796 Значение поля purchase_month: 1
+DEBUG 2025-05-18 15:45:09,807 views 4628 14796 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 15:45:09,808 views 4628 14796 Преобразованные данные: lat=55.801019, lng=37.596879, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 15:45:09,808 views 4628 14796 Создание объекта недвижимости
+ERROR 2025-05-18 15:45:09,811 views 4628 14796 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+ERROR 2025-05-18 15:45:09,811 views 4628 14796 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['LZIgsxRJfE1LuuyeWb8UsoGHU6DCUb4Ot7ycZNTjgBWvWX2mYj06kyd40TM3XmHQ'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.780128'], 'location_lng': ['37.622971'], 'location_address': ['Москва, Олимпийский проспект']}>
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Значение поля location_lat: 55.780128
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Значение поля location_lng: 37.622971
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Значение поля location_address: Москва, Олимпийский проспект
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Значение поля floor: 10
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Значение поля property_type: квартира
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Значение поля property_class: 1
+DEBUG 2025-05-18 15:46:33,504 views 10660 22316 Значение поля purchase_month: 1
+DEBUG 2025-05-18 15:46:33,519 views 10660 22316 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 15:46:33,519 views 10660 22316 Преобразованные данные: lat=55.780128, lng=37.622971, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 15:46:33,520 views 10660 22316 Создание объекта недвижимости
+ERROR 2025-05-18 15:46:33,521 views 10660 22316 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+ERROR 2025-05-18 15:46:33,528 views 10660 22316 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "location_address" в таблице "properties" не существует
+LINE 1: INSERT INTO "properties" ("complex_name", "location_address"...
+                                                  ^
+
+
+DEBUG 2025-05-18 23:29:21,220 views 17672 11868 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 23:29:21,220 views 17672 11868 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['MQatoAAbBCvf18wVfA5U7HqT8GnkeCEtuY0pVQCLCzqZtB03hIX6ZRXgetwLhNhv'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.764646'], 'location_lng': ['37.650437'], 'location_address': ['Москва, Фурманный переулок, 12с1']}>
+DEBUG 2025-05-18 23:29:21,225 views 17672 11868 Значение поля location_lat: 55.764646
+DEBUG 2025-05-18 23:29:21,227 views 17672 11868 Значение поля location_lng: 37.650437
+DEBUG 2025-05-18 23:29:21,227 views 17672 11868 Значение поля location_address: Москва, Фурманный переулок, 12с1
+DEBUG 2025-05-18 23:29:21,227 views 17672 11868 Значение поля floor: 10
+DEBUG 2025-05-18 23:29:21,233 views 17672 11868 Значение поля property_type: квартира
+DEBUG 2025-05-18 23:29:21,233 views 17672 11868 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 23:29:21,242 views 17672 11868 Значение поля property_class: 1
+DEBUG 2025-05-18 23:29:21,244 views 17672 11868 Значение поля purchase_month: 1
+DEBUG 2025-05-18 23:29:21,247 views 17672 11868 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 23:29:21,247 views 17672 11868 Преобразованные данные: lat=55.764646, lng=37.650437, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 23:29:21,252 views 17672 11868 Создание объекта недвижимости
+ERROR 2025-05-18 23:29:21,252 views 17672 11868 Ошибка при создании объекта недвижимости: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year', 'purchase_date'
+ERROR 2025-05-18 23:29:21,277 views 17672 11868 Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year', 'purchase_date'
+
+DEBUG 2025-05-18 23:50:25,235 views 14636 21012 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 23:50:25,239 views 14636 21012 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['NqxQmvKiZ2qbnTHXaw2dXV1H2sTyT77FvynMTLMS0ZlVPmb5cEUpP5y48f2ZWiKH'], 'area': ['67'], 'floor': ['4'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['3'], 'purchase_year': ['2016'], 'finishing_type': ['без отделки'], 'location_lat': ['', '55.791735'], 'location_lng': ['', '37.633958'], 'location_address': ['', 'Москва, Новорижская эстакада'], 'total_floors': ['30'], 'build_year': ['2020']}>
+DEBUG 2025-05-18 23:50:25,243 views 14636 21012 Значение поля location_lat: 55.791735
+DEBUG 2025-05-18 23:50:25,243 views 14636 21012 Значение поля location_lng: 37.633958
+DEBUG 2025-05-18 23:50:25,243 views 14636 21012 Значение поля location_address: Москва, Новорижская эстакада
+DEBUG 2025-05-18 23:50:25,253 views 14636 21012 Значение поля floor: 4
+DEBUG 2025-05-18 23:50:25,263 views 14636 21012 Значение поля property_type: квартира
+DEBUG 2025-05-18 23:50:25,263 views 14636 21012 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 23:50:25,263 views 14636 21012 Значение поля property_class: 1
+DEBUG 2025-05-18 23:50:25,263 views 14636 21012 Значение поля purchase_month: 3
+DEBUG 2025-05-18 23:50:25,276 views 14636 21012 Значение поля purchase_year: 2016
+DEBUG 2025-05-18 23:50:25,277 views 14636 21012 Преобразованные данные: lat=55.791735, lng=37.633958, floor=4, class=1, month=3, year=2016
+DEBUG 2025-05-18 23:50:25,277 views 14636 21012 Создание объекта недвижимости
+ERROR 2025-05-18 23:50:25,311 views 14636 21012 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+ERROR 2025-05-18 23:50:25,345 views 14636 21012 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+
+DEBUG 2025-05-18 23:51:15,545 views 14636 21012 Получен запрос на расчет прогноза
+DEBUG 2025-05-18 23:51:15,545 views 14636 21012 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['Ae4Z0HV3PRo6KTlaH6XHlVxBYYRI17FuimUVxXXDQOjQcmPiJePTd54Y4L094iiw'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.768517'], 'location_lng': ['37.683396'], 'location_address': ['Москва, Старокирочный переулок, 14']}>
+DEBUG 2025-05-18 23:51:15,545 views 14636 21012 Значение поля location_lat: 55.768517
+DEBUG 2025-05-18 23:51:15,555 views 14636 21012 Значение поля location_lng: 37.683396
+DEBUG 2025-05-18 23:51:15,555 views 14636 21012 Значение поля location_address: Москва, Старокирочный переулок, 14
+DEBUG 2025-05-18 23:51:15,555 views 14636 21012 Значение поля floor: 10
+DEBUG 2025-05-18 23:51:15,555 views 14636 21012 Значение поля property_type: квартира
+DEBUG 2025-05-18 23:51:15,559 views 14636 21012 Значение поля finishing_type: без отделки
+DEBUG 2025-05-18 23:51:15,560 views 14636 21012 Значение поля property_class: 1
+DEBUG 2025-05-18 23:51:15,563 views 14636 21012 Значение поля purchase_month: 1
+DEBUG 2025-05-18 23:51:15,563 views 14636 21012 Значение поля purchase_year: 2025
+DEBUG 2025-05-18 23:51:15,563 views 14636 21012 Преобразованные данные: lat=55.768517, lng=37.683396, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-18 23:51:15,563 views 14636 21012 Создание объекта недвижимости
+ERROR 2025-05-18 23:51:15,579 views 14636 21012 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+ERROR 2025-05-18 23:51:15,579 views 14636 21012 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ..._issued", "room_type", "studio", "price_per_sqm", "created_a...
+                                                             ^
+
+
+DEBUG 2025-05-19 00:00:29,027 views 16480 18620 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 00:00:29,032 views 16480 18620 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['VmQXoViUT8hT3WHUFbqhT65urePZTX15DuGTVbkuU5cDvpb2HjitLgCRx1YqW8E7'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.794056'], 'location_lng': ['37.655930'], 'location_address': ['Москва, улица Сокольнический Вал, 1с2']}>
+DEBUG 2025-05-19 00:00:29,032 views 16480 18620 Значение поля location_lat: 55.794056
+DEBUG 2025-05-19 00:00:29,032 views 16480 18620 Значение поля location_lng: 37.655930
+DEBUG 2025-05-19 00:00:29,041 views 16480 18620 Значение поля location_address: Москва, улица Сокольнический Вал, 1с2
+DEBUG 2025-05-19 00:00:29,044 views 16480 18620 Значение поля floor: 10
+DEBUG 2025-05-19 00:00:29,047 views 16480 18620 Значение поля property_type: квартира
+DEBUG 2025-05-19 00:00:29,049 views 16480 18620 Значение поля finishing_type: без отделки
+DEBUG 2025-05-19 00:00:29,049 views 16480 18620 Значение поля property_class: 1
+DEBUG 2025-05-19 00:00:29,062 views 16480 18620 Значение поля purchase_month: 1
+DEBUG 2025-05-19 00:00:29,062 views 16480 18620 Значение поля purchase_year: 2025
+DEBUG 2025-05-19 00:00:29,062 views 16480 18620 Преобразованные данные: lat=55.794056, lng=37.65593, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-19 00:00:29,062 views 16480 18620 Создание объекта недвижимости
+ERROR 2025-05-19 00:00:29,081 views 16480 18620 Ошибка при создании объекта недвижимости: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ...l_floors", "area", "build_year", "purchase_date", "created_a...
+                                                             ^
+
+ERROR 2025-05-19 00:00:29,112 views 16480 18620 Traceback (most recent call last):
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ...l_floors", "area", "build_year", "purchase_date", "created_a...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  столбец "created_at" в таблице "properties" не существует
+LINE 1: ...l_floors", "area", "build_year", "purchase_date", "created_a...
+                                                             ^
+
+
+DEBUG 2025-05-19 00:11:43,212 views 13796 8292 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 00:11:43,213 views 13796 8292 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['zVZZb4vh6icnLyawqtwb57ioMNxt66hkh3PVIkxR7f77d1EEsBonXhPLSAGU9hUm'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.787866'], 'location_lng': ['37.686143'], 'location_address': ['Москва, улица Барболина, 3с54']}>
+DEBUG 2025-05-19 00:11:43,216 views 13796 8292 Значение поля location_lat: 55.787866
+DEBUG 2025-05-19 00:11:43,219 views 13796 8292 Значение поля location_lng: 37.686143
+DEBUG 2025-05-19 00:11:43,221 views 13796 8292 Значение поля location_address: Москва, улица Барболина, 3с54
+DEBUG 2025-05-19 00:11:43,223 views 13796 8292 Значение поля floor: 10
+DEBUG 2025-05-19 00:11:43,225 views 13796 8292 Значение поля property_type: квартира
+DEBUG 2025-05-19 00:11:43,227 views 13796 8292 Значение поля finishing_type: без отделки
+DEBUG 2025-05-19 00:11:43,228 views 13796 8292 Значение поля property_class: 1
+DEBUG 2025-05-19 00:11:43,230 views 13796 8292 Значение поля purchase_month: 1
+DEBUG 2025-05-19 00:11:43,233 views 13796 8292 Значение поля purchase_year: 2025
+DEBUG 2025-05-19 00:11:43,237 views 13796 8292 Преобразованные данные: lat=55.787866, lng=37.686143, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-19 00:11:43,238 views 13796 8292 Создание объекта недвижимости
+ERROR 2025-05-19 00:11:43,242 views 13796 8292 Ошибка при создании объекта недвижимости: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year', 'purchase_date'
+ERROR 2025-05-19 00:11:43,257 views 13796 8292 Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year', 'purchase_date'
+
+DEBUG 2025-05-19 00:26:26,608 views 11872 21120 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 00:26:26,608 views 11872 21120 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['JXHg42CM5VnH3BTprSjee2HX9jFNZZPzr5xcBiEm6Sirv4nxt0bq6cekf6Oe2asB'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.824991'], 'location_lng': ['37.672410'], 'location_address': ['Москва, Восточный административный округ, район Богородское']}>
+DEBUG 2025-05-19 00:26:26,608 views 11872 21120 Значение поля location_lat: 55.824991
+DEBUG 2025-05-19 00:26:26,622 views 11872 21120 Значение поля location_lng: 37.672410
+DEBUG 2025-05-19 00:26:26,622 views 11872 21120 Значение поля location_address: Москва, Восточный административный округ, район Богородское
+DEBUG 2025-05-19 00:26:26,622 views 11872 21120 Значение поля floor: 10
+DEBUG 2025-05-19 00:26:26,635 views 11872 21120 Значение поля property_type: квартира
+DEBUG 2025-05-19 00:26:26,639 views 11872 21120 Значение поля finishing_type: без отделки
+DEBUG 2025-05-19 00:26:26,641 views 11872 21120 Значение поля property_class: 1
+DEBUG 2025-05-19 00:26:26,641 views 11872 21120 Значение поля purchase_month: 1
+DEBUG 2025-05-19 00:26:26,651 views 11872 21120 Значение поля purchase_year: 2025
+DEBUG 2025-05-19 00:26:26,653 views 11872 21120 Преобразованные данные: lat=55.824991, lng=37.67241, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-19 00:26:26,658 views 11872 21120 Создание объекта недвижимости
+ERROR 2025-05-19 00:26:26,658 views 11872 21120 Ошибка при создании объекта недвижимости: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year'
+ERROR 2025-05-19 00:26:26,676 views 11872 21120 Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year'
+
+DEBUG 2025-05-19 00:57:32,170 views 7840 11448 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 00:57:32,170 views 7840 11448 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['UmZKYEsyvS5XNQJHpFFOHcYgVDb0MJSc3x9aPF64rn59Lu6LGZZoCkl9EYWQPVE5'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.828083'], 'location_lng': ['37.602372'], 'location_address': ['Москва, парк Останкино']}>
+DEBUG 2025-05-19 00:57:32,185 views 7840 11448 Значение поля location_lat: 55.828083
+DEBUG 2025-05-19 00:57:32,185 views 7840 11448 Значение поля location_lng: 37.602372
+DEBUG 2025-05-19 00:57:32,186 views 7840 11448 Значение поля location_address: Москва, парк Останкино
+DEBUG 2025-05-19 00:57:32,187 views 7840 11448 Значение поля floor: 10
+DEBUG 2025-05-19 00:57:32,187 views 7840 11448 Значение поля property_type: квартира
+DEBUG 2025-05-19 00:57:32,187 views 7840 11448 Значение поля finishing_type: без отделки
+DEBUG 2025-05-19 00:57:32,187 views 7840 11448 Значение поля property_class: 1
+DEBUG 2025-05-19 00:57:32,187 views 7840 11448 Значение поля purchase_month: 1
+DEBUG 2025-05-19 00:57:32,187 views 7840 11448 Значение поля purchase_year: 2025
+DEBUG 2025-05-19 00:57:32,187 views 7840 11448 Преобразованные данные: lat=55.828083, lng=37.602372, floor=10, class=1, month=1, year=2025
+DEBUG 2025-05-19 00:57:32,187 views 7840 11448 Создание объекта недвижимости
+ERROR 2025-05-19 00:57:32,187 views 7840 11448 Ошибка при создании объекта недвижимости: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year'
+ERROR 2025-05-19 00:57:32,271 views 7840 11448 Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 106, in calculate_prediction
+    property_obj = Property.objects.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Property() got unexpected keyword arguments: 'total_floors', 'area', 'build_year'
+
+DEBUG 2025-05-19 01:14:44,882 views 15124 11148 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:14:44,882 views 15124 11148 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['ZVGP32AEIZwB6uQlaEb7NG9uSkxUU5tW86QfU3eaEuwN48dprYvHIOwnBFiKXhfP'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.773936'], 'location_lng': ['37.478776'], 'location_address': ['Москва, улица Мнёвники, 23']}>
+ERROR 2025-05-19 01:14:44,882 views 15124 11148 Необработанная ошибка: name 'class_mapping' is not defined
+Traceback (most recent call last):
+  File "C:\Projects\restateval\core\views.py", line 92, in calculate_prediction
+    'property_class': class_mapping.get(int(property_class), 'эконом'),
+                      ^^^^^^^^^^^^^
+NameError: name 'class_mapping' is not defined
+DEBUG 2025-05-19 01:17:57,210 views 4500 13040 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:17:57,210 views 4500 13040 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['CxpdlenmgeEaJYE4qGtFI4LPXXAlA47cLIzDcf1ScJEmHC18H0NfDc8IGilbDgT5'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.857445'], 'location_lng': ['37.606492'], 'location_address': ['Москва, Северо-Восточный административный округ, район Отрадное']}>
+DEBUG 2025-05-19 01:17:57,210 views 4500 13040 Создание объекта недвижимости
+DEBUG 2025-05-19 01:17:57,210 views 4500 13040 Данные для создания: {'complex_name': 'Москва, Северо-Восточный административный округ, район Отрадное', 'location_address': 'Москва, Северо-Восточный административный округ, район Отрадное', 'region': 'Москва', 'latitude': 55.857445, 'longitude': 37.606492, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:17:57,228 views 4500 13040 Объект недвижимости создан: 1
+DEBUG 2025-05-19 01:18:07,479 views 4500 13040 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:18:07,479 views 4500 13040 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['CxpdlenmgeEaJYE4qGtFI4LPXXAlA47cLIzDcf1ScJEmHC18H0NfDc8IGilbDgT5'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.768517'], 'location_lng': ['37.638077'], 'location_address': ['Москва, Уланский переулок, 11с2']}>
+DEBUG 2025-05-19 01:18:07,479 views 4500 13040 Создание объекта недвижимости
+DEBUG 2025-05-19 01:18:07,479 views 4500 13040 Данные для создания: {'complex_name': 'Москва, Уланский переулок, 11с2', 'location_address': 'Москва, Уланский переулок, 11с2', 'region': 'Москва', 'latitude': 55.768517, 'longitude': 37.638077, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:18:07,479 views 4500 13040 Объект недвижимости создан: 2
+DEBUG 2025-05-19 01:18:21,311 views 4500 13040 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:18:21,311 views 4500 13040 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['R6DzE7SD3V0iCEaygJyKGJdVaApYT6Pu0hNZv8w9Zq0uAixCx3SkBRAOTVaOWiBn'], 'area': ['185'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.788640'], 'location_lng': ['37.633958'], 'location_address': ['Москва, Центральный административный округ, Мещанский район']}>
+DEBUG 2025-05-19 01:18:21,311 views 4500 13040 Создание объекта недвижимости
+DEBUG 2025-05-19 01:18:21,311 views 4500 13040 Данные для создания: {'complex_name': 'Москва, Центральный административный округ, Мещанский район', 'location_address': 'Москва, Центральный административный округ, Мещанский район', 'region': 'Москва', 'latitude': 55.78864, 'longitude': 37.633958, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:18:21,337 views 4500 13040 Объект недвижимости создан: 3
+DEBUG 2025-05-19 01:18:28,223 views 4500 13040 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:18:28,223 views 4500 13040 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['R6DzE7SD3V0iCEaygJyKGJdVaApYT6Pu0hNZv8w9Zq0uAixCx3SkBRAOTVaOWiBn'], 'area': ['185'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.742186'], 'location_lng': ['37.613358'], 'location_address': ['Москва, Болотная набережная']}>
+DEBUG 2025-05-19 01:18:28,223 views 4500 13040 Создание объекта недвижимости
+DEBUG 2025-05-19 01:18:28,223 views 4500 13040 Данные для создания: {'complex_name': 'Москва, Болотная набережная', 'location_address': 'Москва, Болотная набережная', 'region': 'Москва', 'latitude': 55.742186, 'longitude': 37.613358, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:18:28,248 views 4500 13040 Объект недвижимости создан: 4
+DEBUG 2025-05-19 01:18:43,314 views 4500 13040 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:18:43,314 views 4500 13040 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['7RIzXhh7mmmMXFpIsR292nzFikcFwGx2g2SZOiVDiRmYVjMMJbmJXvWy1FXvzSjV'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.761549'], 'location_lng': ['37.643571'], 'location_address': ['Москва, Чистопрудный бульвар']}>
+DEBUG 2025-05-19 01:18:43,314 views 4500 13040 Создание объекта недвижимости
+DEBUG 2025-05-19 01:18:43,314 views 4500 13040 Данные для создания: {'complex_name': 'Москва, Чистопрудный бульвар', 'location_address': 'Москва, Чистопрудный бульвар', 'region': 'Москва', 'latitude': 55.761549, 'longitude': 37.643571, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:18:43,338 views 4500 13040 Объект недвижимости создан: 5
+DEBUG 2025-05-19 01:18:58,654 views 4500 13040 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:18:58,654 views 4500 13040 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['yEMAay96IooFyHM7Co8dfTSKqBs0KhOlHPW01zNCEToRwl9bTIsNa1fD9WdQNtAe'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.764646'], 'location_lng': ['37.638077'], 'location_address': ['Москва, Чистопрудный бульвар, 2']}>
+DEBUG 2025-05-19 01:18:58,654 views 4500 13040 Создание объекта недвижимости
+DEBUG 2025-05-19 01:18:58,654 views 4500 13040 Данные для создания: {'complex_name': 'Москва, Чистопрудный бульвар, 2', 'location_address': 'Москва, Чистопрудный бульвар, 2', 'region': 'Москва', 'latitude': 55.764646, 'longitude': 37.638077, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:18:58,679 views 4500 13040 Объект недвижимости создан: 6
+DEBUG 2025-05-19 01:21:51,111 views 4500 13040 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:21:51,111 views 4500 13040 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['ZVGP32AEIZwB6uQlaEb7NG9uSkxUU5tW86QfU3eaEuwN48dprYvHIOwnBFiKXhfP'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.773936'], 'location_lng': ['37.478776'], 'location_address': ['Москва, улица Мнёвники, 23']}>
+DEBUG 2025-05-19 01:21:51,111 views 4500 13040 Создание объекта недвижимости
+DEBUG 2025-05-19 01:21:51,111 views 4500 13040 Данные для создания: {'complex_name': 'Москва, улица Мнёвники, 23', 'location_address': 'Москва, улица Мнёвники, 23', 'region': 'Москва', 'latitude': 55.773936, 'longitude': 37.478776, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:21:51,119 views 4500 13040 Объект недвижимости создан: 7
+DEBUG 2025-05-19 01:28:36,657 views 12376 14104 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:28:36,657 views 12376 14104 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['n3nIOM1LDZ1A2GPJerWi00Lfst8qNjLbwex8FNFhzu1M0kcNvLgSV888bOTgQvx4'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.770839'], 'location_lng': ['37.676530'], 'location_address': ['Москва, Плетешковский переулок, 7-9с1']}>
+DEBUG 2025-05-19 01:28:36,657 views 12376 14104 Создание объекта недвижимости
+DEBUG 2025-05-19 01:28:36,657 views 12376 14104 Данные для создания: {'complex_name': 'Москва, Плетешковский переулок, 7-9с1', 'location_address': 'Москва, Плетешковский переулок, 7-9с1', 'region': 'Москва', 'latitude': 55.770839, 'longitude': 37.67653, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:28:36,679 views 12376 14104 Объект недвижимости создан: 8
+DEBUG 2025-05-19 01:35:59,644 views 4260 16972 Получен запрос на расчет прогноза
+DEBUG 2025-05-19 01:35:59,644 views 4260 16972 POST данные: <QueryDict: {'csrfmiddlewaretoken': ['tQ1ECrAP0JraFyY1rIBVc6dE6W0yWUqHC1b4tselWermDcl5I2Vv7eAxPhLoZ6cA'], 'area': ['60'], 'property_type': ['квартира'], 'property_class': ['1'], 'purchase_month': ['1'], 'purchase_year': ['2025'], 'finishing_type': ['без отделки'], 'floor': ['10'], 'location_lat': ['55.772388'], 'location_lng': ['37.633958'], 'location_address': ['Москва, Садовое кольцо']}>
+DEBUG 2025-05-19 01:35:59,644 views 4260 16972 Создание объекта недвижимости
+DEBUG 2025-05-19 01:35:59,644 views 4260 16972 Данные для создания: {'complex_name': 'Москва, Садовое кольцо', 'location_address': 'Москва, Садовое кольцо', 'region': 'Москва', 'latitude': 55.772388, 'longitude': 37.633958, 'floor': 10, 'property_type': 'квартира', 'property_class': 'эконом', 'finishing': 'без отделки', 'purchase_date': datetime.date(2025, 1, 1)}
+DEBUG 2025-05-19 01:35:59,669 views 4260 16972 Объект недвижимости создан: 9
+INFO 2025-05-19 02:13:37,977 ml_models 8560 4044 Starting prediction generation for request: 10
+ERROR 2025-05-19 02:13:37,977 ml_models 8560 4044 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:13:37,977 ml_models 8560 4044 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 198, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:13:37,977 views 8560 4044 Error generating prediction: Не удалось сгенерировать прогноз
+INFO 2025-05-19 02:15:25,892 ml_models 9960 12360 Starting prediction generation for request: 11
+ERROR 2025-05-19 02:15:25,892 ml_models 9960 12360 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:15:25,892 ml_models 9960 12360 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 216, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:15:25,892 views 9960 12360 Error generating prediction: Не удалось сгенерировать прогноз
+INFO 2025-05-19 02:15:42,337 ml_models 9960 12360 Starting prediction generation for request: 12
+ERROR 2025-05-19 02:15:42,337 ml_models 9960 12360 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:15:42,337 ml_models 9960 12360 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 216, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:15:42,337 views 9960 12360 Error generating prediction: Не удалось сгенерировать прогноз
+INFO 2025-05-19 02:16:50,039 ml_models 16952 19928 Starting prediction generation for request: 13
+ERROR 2025-05-19 02:16:50,039 ml_models 16952 19928 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:16:50,039 ml_models 16952 19928 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 216, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:16:50,039 views 16952 19928 Error generating prediction: Не удалось сгенерировать прогноз
+INFO 2025-05-19 02:17:24,621 ml_models 21188 10420 Starting prediction generation for request: 14
+ERROR 2025-05-19 02:17:24,621 ml_models 21188 10420 Error preparing features: 'MLModel' object has no attribute 'prepare_features'
+ERROR 2025-05-19 02:17:24,621 ml_models 21188 10420 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 216, in generate_prediction
+    X = model.prepare_features(property_data)
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MLModel' object has no attribute 'prepare_features'
+
+ERROR 2025-05-19 02:17:24,621 views 21188 10420 Error generating prediction: Не удалось сгенерировать прогноз
+INFO 2025-05-19 02:20:30,886 ml_models 18620 1776 Starting prediction generation for request: 15
+DEBUG 2025-05-19 02:20:30,886 ml_models 18620 1776 Preparing features for property: 15
+DEBUG 2025-05-19 02:20:30,886 ml_models 18620 1776 Coordinates validated: lat=55.789414, lon=37.546067, floor=10
+DEBUG 2025-05-19 02:20:30,886 ml_models 18620 1776 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-19 02:20:30,898 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:20:30,898 ml_models 18620 1776 Features: [55.789414, 37.546067, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-19 02:20:31,196 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:20:31,196 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:20:31,203 ml_models 18620 1776 Created prediction result: 28 for scenario pessimistic
+INFO 2025-05-19 02:20:31,205 ml_models 18620 1776 Created prediction result: 29 for scenario realistic
+INFO 2025-05-19 02:20:31,207 ml_models 18620 1776 Created prediction result: 30 for scenario optimistic
+INFO 2025-05-19 02:20:31,207 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:20:41,630 ml_models 18620 1776 Starting prediction generation for request: 16
+DEBUG 2025-05-19 02:20:41,630 ml_models 18620 1776 Preparing features for property: 16
+DEBUG 2025-05-19 02:20:41,630 ml_models 18620 1776 Coordinates validated: lat=55.800245, lon=37.682023, floor=10
+DEBUG 2025-05-19 02:20:41,630 ml_models 18620 1776 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-19 02:20:41,630 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:20:41,630 ml_models 18620 1776 Features: [55.800245, 37.682023, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-19 02:20:41,937 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:20:41,939 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:20:41,946 ml_models 18620 1776 Created prediction result: 31 for scenario pessimistic
+INFO 2025-05-19 02:20:41,947 ml_models 18620 1776 Created prediction result: 32 for scenario realistic
+INFO 2025-05-19 02:20:41,949 ml_models 18620 1776 Created prediction result: 33 for scenario optimistic
+INFO 2025-05-19 02:20:41,949 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:20:52,684 ml_models 18620 1776 Starting prediction generation for request: 17
+DEBUG 2025-05-19 02:20:52,684 ml_models 18620 1776 Preparing features for property: 17
+DEBUG 2025-05-19 02:20:52,684 ml_models 18620 1776 Coordinates validated: lat=55.743154, lon=37.639107, floor=10
+DEBUG 2025-05-19 02:20:52,684 ml_models 18620 1776 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-19 02:20:52,684 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:20:52,684 ml_models 18620 1776 Features: [55.743154, 37.639107, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-19 02:20:52,955 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:20:52,955 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:20:52,960 ml_models 18620 1776 Created prediction result: 34 for scenario pessimistic
+INFO 2025-05-19 02:20:52,960 ml_models 18620 1776 Created prediction result: 35 for scenario realistic
+INFO 2025-05-19 02:20:52,963 ml_models 18620 1776 Created prediction result: 36 for scenario optimistic
+INFO 2025-05-19 02:20:52,963 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:20:58,986 ml_models 18620 1776 Starting prediction generation for request: 18
+DEBUG 2025-05-19 02:20:58,986 ml_models 18620 1776 Preparing features for property: 18
+DEBUG 2025-05-19 02:20:58,986 ml_models 18620 1776 Coordinates validated: lat=55.620562, lon=37.246346, floor=10
+DEBUG 2025-05-19 02:20:58,986 ml_models 18620 1776 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-19 02:20:58,996 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:20:58,997 ml_models 18620 1776 Features: [55.620562, 37.246346, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-19 02:20:59,318 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:20:59,318 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:20:59,335 ml_models 18620 1776 Created prediction result: 37 for scenario pessimistic
+INFO 2025-05-19 02:20:59,337 ml_models 18620 1776 Created prediction result: 38 for scenario realistic
+INFO 2025-05-19 02:20:59,339 ml_models 18620 1776 Created prediction result: 39 for scenario optimistic
+INFO 2025-05-19 02:20:59,339 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:21:17,274 ml_models 18620 1776 Starting prediction generation for request: 19
+DEBUG 2025-05-19 02:21:17,274 ml_models 18620 1776 Preparing features for property: 19
+DEBUG 2025-05-19 02:21:17,274 ml_models 18620 1776 Coordinates validated: lat=55.891463, lon=37.723218, floor=10
+DEBUG 2025-05-19 02:21:17,274 ml_models 18620 1776 Encoded property class 'комфорт+' to 3.0
+DEBUG 2025-05-19 02:21:17,274 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:21:17,274 ml_models 18620 1776 Features: [55.891463, 37.723218, 10, 1.0, 0.0, 3.0, 1, 2025]
+DEBUG 2025-05-19 02:21:17,504 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:21:17,504 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:21:17,523 ml_models 18620 1776 Created prediction result: 40 for scenario pessimistic
+INFO 2025-05-19 02:21:17,525 ml_models 18620 1776 Created prediction result: 41 for scenario realistic
+INFO 2025-05-19 02:21:17,527 ml_models 18620 1776 Created prediction result: 42 for scenario optimistic
+INFO 2025-05-19 02:21:17,527 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:21:23,948 ml_models 18620 1776 Starting prediction generation for request: 20
+DEBUG 2025-05-19 02:21:23,948 ml_models 18620 1776 Preparing features for property: 20
+DEBUG 2025-05-19 02:21:23,948 ml_models 18620 1776 Coordinates validated: lat=55.597095, lon=37.706738, floor=10
+DEBUG 2025-05-19 02:21:23,948 ml_models 18620 1776 Encoded property class 'комфорт+' to 3.0
+DEBUG 2025-05-19 02:21:23,948 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:21:23,948 ml_models 18620 1776 Features: [55.597095, 37.706738, 10, 1.0, 0.0, 3.0, 1, 2025]
+DEBUG 2025-05-19 02:21:24,197 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:21:24,197 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:21:24,216 ml_models 18620 1776 Created prediction result: 43 for scenario pessimistic
+INFO 2025-05-19 02:21:24,219 ml_models 18620 1776 Created prediction result: 44 for scenario realistic
+INFO 2025-05-19 02:21:24,220 ml_models 18620 1776 Created prediction result: 45 for scenario optimistic
+INFO 2025-05-19 02:21:24,220 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:21:40,559 ml_models 18620 1776 Starting prediction generation for request: 21
+DEBUG 2025-05-19 02:21:40,559 ml_models 18620 1776 Preparing features for property: 21
+DEBUG 2025-05-19 02:21:40,559 ml_models 18620 1776 Coordinates validated: lat=55.832768, lon=37.948437, floor=10
+DEBUG 2025-05-19 02:21:40,559 ml_models 18620 1776 Encoded property class 'комфорт+' to 3.0
+DEBUG 2025-05-19 02:21:40,559 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:21:40,559 ml_models 18620 1776 Features: [55.832768, 37.948437, 10, 1.0, 0.0, 3.0, 1, 2025]
+DEBUG 2025-05-19 02:21:40,904 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:21:40,907 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:21:40,922 ml_models 18620 1776 Created prediction result: 46 for scenario pessimistic
+INFO 2025-05-19 02:21:40,924 ml_models 18620 1776 Created prediction result: 47 for scenario realistic
+INFO 2025-05-19 02:21:40,924 ml_models 18620 1776 Created prediction result: 48 for scenario optimistic
+INFO 2025-05-19 02:21:40,924 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:22:00,764 ml_models 18620 1776 Starting prediction generation for request: 22
+DEBUG 2025-05-19 02:22:00,764 ml_models 18620 1776 Preparing features for property: 22
+DEBUG 2025-05-19 02:22:00,764 ml_models 18620 1776 Coordinates validated: lat=55.832768, lon=37.948437, floor=10
+DEBUG 2025-05-19 02:22:00,764 ml_models 18620 1776 Encoded property class 'комфорт+' to 3.0
+DEBUG 2025-05-19 02:22:00,764 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:22:00,764 ml_models 18620 1776 Features: [55.832768, 37.948437, 10, 0.0, 0.0, 3.0, 1, 2025]
+DEBUG 2025-05-19 02:22:01,068 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:22:01,069 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:22:01,085 ml_models 18620 1776 Created prediction result: 49 for scenario pessimistic
+INFO 2025-05-19 02:22:01,087 ml_models 18620 1776 Created prediction result: 50 for scenario realistic
+INFO 2025-05-19 02:22:01,090 ml_models 18620 1776 Created prediction result: 51 for scenario optimistic
+INFO 2025-05-19 02:22:01,090 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:22:12,483 ml_models 18620 1776 Starting prediction generation for request: 23
+DEBUG 2025-05-19 02:22:12,483 ml_models 18620 1776 Preparing features for property: 23
+DEBUG 2025-05-19 02:22:12,483 ml_models 18620 1776 Coordinates validated: lat=55.584651, lon=38.041821, floor=10
+DEBUG 2025-05-19 02:22:12,483 ml_models 18620 1776 Encoded property class 'комфорт+' to 3.0
+DEBUG 2025-05-19 02:22:12,483 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:22:12,483 ml_models 18620 1776 Features: [55.584651, 38.041821, 10, 0.0, 0.0, 3.0, 1, 2025]
+DEBUG 2025-05-19 02:22:12,750 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:22:12,750 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:22:12,756 ml_models 18620 1776 Created prediction result: 52 for scenario pessimistic
+INFO 2025-05-19 02:22:12,758 ml_models 18620 1776 Created prediction result: 53 for scenario realistic
+INFO 2025-05-19 02:22:12,759 ml_models 18620 1776 Created prediction result: 54 for scenario optimistic
+INFO 2025-05-19 02:22:12,759 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:22:19,664 ml_models 18620 1776 Starting prediction generation for request: 24
+DEBUG 2025-05-19 02:22:19,664 ml_models 18620 1776 Preparing features for property: 24
+DEBUG 2025-05-19 02:22:19,664 ml_models 18620 1776 Coordinates validated: lat=55.746107, lon=37.596875, floor=10
+DEBUG 2025-05-19 02:22:19,664 ml_models 18620 1776 Encoded property class 'комфорт+' to 3.0
+DEBUG 2025-05-19 02:22:19,664 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:22:19,664 ml_models 18620 1776 Features: [55.746107, 37.596875, 10, 0.0, 0.0, 3.0, 1, 2025]
+DEBUG 2025-05-19 02:22:19,962 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:22:19,962 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:22:19,981 ml_models 18620 1776 Created prediction result: 55 for scenario pessimistic
+INFO 2025-05-19 02:22:19,983 ml_models 18620 1776 Created prediction result: 56 for scenario realistic
+INFO 2025-05-19 02:22:19,985 ml_models 18620 1776 Created prediction result: 57 for scenario optimistic
+INFO 2025-05-19 02:22:19,985 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:24:10,131 ml_models 18620 1776 Starting prediction generation for request: 25
+DEBUG 2025-05-19 02:24:10,131 ml_models 18620 1776 Preparing features for property: 25
+DEBUG 2025-05-19 02:24:10,131 ml_models 18620 1776 Coordinates validated: lat=55.821125, lon=37.688889, floor=10
+DEBUG 2025-05-19 02:24:10,131 ml_models 18620 1776 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-19 02:24:10,131 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:24:10,131 ml_models 18620 1776 Features: [55.821125, 37.688889, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-19 02:24:10,374 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:24:10,375 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:24:10,380 ml_models 18620 1776 Created prediction result: 58 for scenario pessimistic
+INFO 2025-05-19 02:24:10,382 ml_models 18620 1776 Created prediction result: 59 for scenario realistic
+INFO 2025-05-19 02:24:10,384 ml_models 18620 1776 Created prediction result: 60 for scenario optimistic
+INFO 2025-05-19 02:24:10,384 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:24:26,433 ml_models 18620 1776 Starting prediction generation for request: 26
+DEBUG 2025-05-19 02:24:26,433 ml_models 18620 1776 Preparing features for property: 26
+DEBUG 2025-05-19 02:24:26,433 ml_models 18620 1776 Coordinates validated: lat=55.821125, lon=37.688889, floor=36
+DEBUG 2025-05-19 02:24:26,433 ml_models 18620 1776 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-19 02:24:26,433 ml_models 18620 1776 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:24:26,433 ml_models 18620 1776 Features: [55.821125, 37.688889, 36, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-19 02:24:26,665 ml_models 18620 1776 Model prediction: [461536.8]
+INFO 2025-05-19 02:24:26,667 ml_models 18620 1776 Base price predicted: 461,536.81
+INFO 2025-05-19 02:24:26,684 ml_models 18620 1776 Created prediction result: 61 for scenario pessimistic
+INFO 2025-05-19 02:24:26,684 ml_models 18620 1776 Created prediction result: 62 for scenario realistic
+INFO 2025-05-19 02:24:26,684 ml_models 18620 1776 Created prediction result: 63 for scenario optimistic
+INFO 2025-05-19 02:24:26,684 ml_models 18620 1776 Successfully generated 3 prediction results
+INFO 2025-05-19 02:32:34,356 ml_models 23188 4932 Starting prediction generation for request: 27
+DEBUG 2025-05-19 02:32:34,356 ml_models 23188 4932 Preparing features for property: 27
+DEBUG 2025-05-19 02:32:34,356 ml_models 23188 4932 Coordinates validated: lat=55.767743, lon=37.657303, floor=10
+DEBUG 2025-05-19 02:32:34,371 ml_models 23188 4932 Encoded property class 'эконом' to 1.0
+DEBUG 2025-05-19 02:32:34,372 ml_models 23188 4932 Created feature matrix with shape: 1 x 8
+DEBUG 2025-05-19 02:32:34,372 ml_models 23188 4932 Features: [55.767743, 37.657303, 10, 1.0, 0.0, 1.0, 1, 2025]
+DEBUG 2025-05-19 02:32:34,650 ml_models 23188 4932 Model prediction: [461536.8]
+INFO 2025-05-19 02:32:34,652 ml_models 23188 4932 Base price predicted: 461,536.81
+INFO 2025-05-19 02:32:34,670 ml_models 23188 4932 Created prediction result: 64 for scenario pessimistic
+INFO 2025-05-19 02:32:34,672 ml_models 23188 4932 Created prediction result: 65 for scenario realistic
+INFO 2025-05-19 02:32:34,675 ml_models 23188 4932 Created prediction result: 66 for scenario optimistic
+INFO 2025-05-19 02:32:34,675 ml_models 23188 4932 Successfully generated 3 prediction results
+INFO 2025-05-19 02:37:13,486 ml_models 17572 1052 Starting prediction generation for request: 28
+INFO 2025-05-19 02:37:13,486 ml_models 17572 1052 Initialized MLModel with model path: C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:37:13,486 ml_models 17572 1052 
+            Input property data:
+            ID: 28
+            Latitude: 55.777032
+            Longitude: 37.600999
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 02:37:13,494 ml_models 17572 1052 Validated numeric values: lat=55.777032, lon=37.600999, floor=10
+INFO 2025-05-19 02:37:13,494 ml_models 17572 1052 Encoded property type: квартира -> 1.0
+INFO 2025-05-19 02:37:13,495 ml_models 17572 1052 Encoded finishing: без отделки -> 0.0
+INFO 2025-05-19 02:37:13,495 ml_models 17572 1052 Encoded property class 'эконом' to 1.0
+INFO 2025-05-19 02:37:13,495 ml_models 17572 1052 Encoded property class: эконом -> 1.0
+INFO 2025-05-19 02:37:13,495 ml_models 17572 1052 Added time features: month=1, year=2025
+INFO 2025-05-19 02:37:13,495 ml_models 17572 1052 Created feature array: [[5.5777031e+01 3.7600998e+01 1.0000000e+01 1.0000000e+00 0.0000000e+00
+  1.0000000e+00 1.0000000e+00 2.0250000e+03]]
+INFO 2025-05-19 02:37:13,528 ml_models 17572 1052 Created DMatrix with shape: 1 x 8
+INFO 2025-05-19 02:37:13,530 ml_models 17572 1052 Features prepared successfully
+INFO 2025-05-19 02:37:13,866 ml_models 17572 1052 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:37:13,866 ml_models 17572 1052 Model type: <class 'xgboost.core.Booster'>
+INFO 2025-05-19 02:37:13,866 ml_models 17572 1052 Predicting for input matrix with shape: 1 x 8
+INFO 2025-05-19 02:37:13,868 ml_models 17572 1052 Raw prediction output: [461536.8]
+INFO 2025-05-19 02:37:13,868 ml_models 17572 1052 Raw base price: 461536.8125
+INFO 2025-05-19 02:37:13,868 ml_models 17572 1052 Base price predicted: 461,536.81
+INFO 2025-05-19 02:37:13,868 ml_models 17572 1052 Generated scenarios: {'pessimistic': 415383.13125000003, 'realistic': 461536.8125, 'optimistic': 507690.49375}
+INFO 2025-05-19 02:37:13,870 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[394613.97, 402921.64, 411229.3, 415383.13, 423690.79, 431998.46]
+INFO 2025-05-19 02:37:13,874 ml_models 17572 1052 Created prediction result: 67 for scenario pessimistic
+INFO 2025-05-19 02:37:13,874 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[438459.97, 447690.71, 456921.44, 461536.81, 470767.55, 479998.29]
+INFO 2025-05-19 02:37:13,876 ml_models 17572 1052 Created prediction result: 68 for scenario realistic
+INFO 2025-05-19 02:37:13,876 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[482305.97, 492459.78, 502613.59, 507690.49, 517844.3, 527998.11]
+INFO 2025-05-19 02:37:13,877 ml_models 17572 1052 Created prediction result: 69 for scenario optimistic
+INFO 2025-05-19 02:37:13,878 ml_models 17572 1052 Successfully generated 3 prediction results
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Starting prediction generation for request: 29
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Initialized MLModel with model path: C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 
+            Input property data:
+            ID: 29
+            Latitude: 55.711961
+            Longitude: 37.613358
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2029-10-01
+            
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Validated numeric values: lat=55.711961, lon=37.613358, floor=10
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Encoded property type: квартира -> 1.0
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Encoded finishing: без отделки -> 0.0
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Encoded property class 'эконом' to 1.0
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Encoded property class: эконом -> 1.0
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Added time features: month=10, year=2029
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Created feature array: [[5.5711960e+01 3.7613358e+01 1.0000000e+01 1.0000000e+00 0.0000000e+00
+  1.0000000e+00 1.0000000e+01 2.0290000e+03]]
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Created DMatrix with shape: 1 x 8
+INFO 2025-05-19 02:38:29,414 ml_models 17572 1052 Features prepared successfully
+INFO 2025-05-19 02:38:29,691 ml_models 17572 1052 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:38:29,693 ml_models 17572 1052 Model type: <class 'xgboost.core.Booster'>
+INFO 2025-05-19 02:38:29,693 ml_models 17572 1052 Predicting for input matrix with shape: 1 x 8
+INFO 2025-05-19 02:38:29,695 ml_models 17572 1052 Raw prediction output: [459389.47]
+INFO 2025-05-19 02:38:29,695 ml_models 17572 1052 Raw base price: 459389.46875
+INFO 2025-05-19 02:38:29,696 ml_models 17572 1052 Base price predicted: 459,389.47
+INFO 2025-05-19 02:38:29,696 ml_models 17572 1052 Generated scenarios: {'pessimistic': 413450.52187500003, 'realistic': 459389.46875, 'optimistic': 505328.415625}
+INFO 2025-05-19 02:38:29,697 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[392778.0, 401047.01, 409316.02, 413450.52, 421719.53, 429988.54]
+INFO 2025-05-19 02:38:29,716 ml_models 17572 1052 Created prediction result: 70 for scenario pessimistic
+INFO 2025-05-19 02:38:29,716 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[436420.0, 445607.78, 454795.57, 459389.47, 468577.26, 477765.05]
+INFO 2025-05-19 02:38:29,718 ml_models 17572 1052 Created prediction result: 71 for scenario realistic
+INFO 2025-05-19 02:38:29,718 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[480061.99, 490168.56, 500275.13, 505328.42, 515434.98, 525541.55]
+INFO 2025-05-19 02:38:29,720 ml_models 17572 1052 Created prediction result: 72 for scenario optimistic
+INFO 2025-05-19 02:38:29,720 ml_models 17572 1052 Successfully generated 3 prediction results
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Starting prediction generation for request: 30
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Initialized MLModel with model path: C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 
+            Input property data:
+            ID: 30
+            Latitude: 55.807206
+            Longitude: 37.835831
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2029-10-01
+            
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Validated numeric values: lat=55.807206, lon=37.835831, floor=10
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Encoded property type: квартира -> 1.0
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Encoded finishing: без отделки -> 0.0
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Encoded property class 'эконом' to 1.0
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Encoded property class: эконом -> 1.0
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Added time features: month=10, year=2029
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Created feature array: [[5.5807205e+01 3.7835831e+01 1.0000000e+01 1.0000000e+00 0.0000000e+00
+  1.0000000e+00 1.0000000e+01 2.0290000e+03]]
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Created DMatrix with shape: 1 x 8
+INFO 2025-05-19 02:38:39,923 ml_models 17572 1052 Features prepared successfully
+INFO 2025-05-19 02:38:40,194 ml_models 17572 1052 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:38:40,196 ml_models 17572 1052 Model type: <class 'xgboost.core.Booster'>
+INFO 2025-05-19 02:38:40,196 ml_models 17572 1052 Predicting for input matrix with shape: 1 x 8
+INFO 2025-05-19 02:38:40,198 ml_models 17572 1052 Raw prediction output: [459389.47]
+INFO 2025-05-19 02:38:40,198 ml_models 17572 1052 Raw base price: 459389.46875
+INFO 2025-05-19 02:38:40,198 ml_models 17572 1052 Base price predicted: 459,389.47
+INFO 2025-05-19 02:38:40,198 ml_models 17572 1052 Generated scenarios: {'pessimistic': 413450.52187500003, 'realistic': 459389.46875, 'optimistic': 505328.415625}
+INFO 2025-05-19 02:38:40,200 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[392778.0, 401047.01, 409316.02, 413450.52, 421719.53, 429988.54]
+INFO 2025-05-19 02:38:40,214 ml_models 17572 1052 Created prediction result: 73 for scenario pessimistic
+INFO 2025-05-19 02:38:40,216 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[436420.0, 445607.78, 454795.57, 459389.47, 468577.26, 477765.05]
+INFO 2025-05-19 02:38:40,219 ml_models 17572 1052 Created prediction result: 74 for scenario realistic
+INFO 2025-05-19 02:38:40,219 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[480061.99, 490168.56, 500275.13, 505328.42, 515434.98, 525541.55]
+INFO 2025-05-19 02:38:40,219 ml_models 17572 1052 Created prediction result: 75 for scenario optimistic
+INFO 2025-05-19 02:38:40,221 ml_models 17572 1052 Successfully generated 3 prediction results
+INFO 2025-05-19 02:38:47,159 ml_models 17572 1052 Starting prediction generation for request: 31
+INFO 2025-05-19 02:38:47,159 ml_models 17572 1052 Initialized MLModel with model path: C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:38:47,159 ml_models 17572 1052 
+            Input property data:
+            ID: 31
+            Latitude: 55.807206
+            Longitude: 37.835831
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2030-10-01
+            
+INFO 2025-05-19 02:38:47,159 ml_models 17572 1052 Validated numeric values: lat=55.807206, lon=37.835831, floor=10
+INFO 2025-05-19 02:38:47,159 ml_models 17572 1052 Encoded property type: квартира -> 1.0
+INFO 2025-05-19 02:38:47,167 ml_models 17572 1052 Encoded finishing: без отделки -> 0.0
+INFO 2025-05-19 02:38:47,168 ml_models 17572 1052 Encoded property class 'эконом' to 1.0
+INFO 2025-05-19 02:38:47,168 ml_models 17572 1052 Encoded property class: эконом -> 1.0
+INFO 2025-05-19 02:38:47,168 ml_models 17572 1052 Added time features: month=10, year=2030
+INFO 2025-05-19 02:38:47,168 ml_models 17572 1052 Created feature array: [[5.5807205e+01 3.7835831e+01 1.0000000e+01 1.0000000e+00 0.0000000e+00
+  1.0000000e+00 1.0000000e+01 2.0300000e+03]]
+INFO 2025-05-19 02:38:47,168 ml_models 17572 1052 Created DMatrix with shape: 1 x 8
+INFO 2025-05-19 02:38:47,168 ml_models 17572 1052 Features prepared successfully
+INFO 2025-05-19 02:38:47,468 ml_models 17572 1052 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:38:47,469 ml_models 17572 1052 Model type: <class 'xgboost.core.Booster'>
+INFO 2025-05-19 02:38:47,469 ml_models 17572 1052 Predicting for input matrix with shape: 1 x 8
+INFO 2025-05-19 02:38:47,471 ml_models 17572 1052 Raw prediction output: [459389.47]
+INFO 2025-05-19 02:38:47,471 ml_models 17572 1052 Raw base price: 459389.46875
+INFO 2025-05-19 02:38:47,473 ml_models 17572 1052 Base price predicted: 459,389.47
+INFO 2025-05-19 02:38:47,473 ml_models 17572 1052 Generated scenarios: {'pessimistic': 413450.52187500003, 'realistic': 459389.46875, 'optimistic': 505328.415625}
+INFO 2025-05-19 02:38:47,473 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[392778.0, 401047.01, 409316.02, 413450.52, 421719.53, 429988.54]
+INFO 2025-05-19 02:38:47,477 ml_models 17572 1052 Created prediction result: 76 for scenario pessimistic
+INFO 2025-05-19 02:38:47,477 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[436420.0, 445607.78, 454795.57, 459389.47, 468577.26, 477765.05]
+INFO 2025-05-19 02:38:47,479 ml_models 17572 1052 Created prediction result: 77 for scenario realistic
+INFO 2025-05-19 02:38:47,479 ml_models 17572 1052 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[480061.99, 490168.56, 500275.13, 505328.42, 515434.98, 525541.55]
+INFO 2025-05-19 02:38:47,481 ml_models 17572 1052 Created prediction result: 78 for scenario optimistic
+INFO 2025-05-19 02:38:47,481 ml_models 17572 1052 Successfully generated 3 prediction results
+INFO 2025-05-19 02:46:11,542 ml_models 12468 12660 Starting prediction generation for request: 32
+INFO 2025-05-19 02:46:11,542 ml_models 12468 12660 Model file size: 3681655 bytes
+INFO 2025-05-19 02:46:11,542 ml_models 12468 12660 Model file content preview: b'{"learner":{"attributes":{"best_iteration":"99","best_score":"17409.753341282965"},"feature_names":['
+ERROR 2025-05-19 02:46:11,554 ml_models 12468 12660 Error loading model: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,554 ml_models 12468 12660 Error in predict: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,587 ml_models 12468 12660 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 184, in predict
+    self.model = self._load_model()
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 82, in _load_model
+    model = xgb.XGBRegressor()
+            ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1717, in __init__
+    super().__init__(objective=objective, **kwargs)
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 673, in __init__
+    raise ImportError(
+ImportError: sklearn needs to be installed in order to use this module
+
+ERROR 2025-05-19 02:46:11,587 ml_models 12468 12660 Error in model testing: sklearn needs to be installed in order to use this module
+INFO 2025-05-19 02:46:11,602 ml_models 12468 12660 
+            Input property data:
+            ID: 32
+            Latitude: 55.796377
+            Longitude: 37.635331
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 02:46:11,602 ml_models 12468 12660 Scaled coordinates: lat=0.7964, lon=0.6353, floor=10
+INFO 2025-05-19 02:46:11,603 ml_models 12468 12660 Encoded property type: квартира -> 1.0
+INFO 2025-05-19 02:46:11,603 ml_models 12468 12660 Encoded finishing: без отделки -> 0.0
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 Encoded property class 'эконом' to 1.0
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 Encoded property class: эконом -> 0.2
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 Scaled time features: month=0.08, year=0.50
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 Feature values:
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 lat: 0.7964
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 lon: 0.6353
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 floor: 0.2000
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 type: 1.0000
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 finishing: 0.0000
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 class: 0.2000
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 month: 0.0833
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 year: 0.5000
+INFO 2025-05-19 02:46:11,604 ml_models 12468 12660 Created DMatrix with shape: 1 x 8
+ERROR 2025-05-19 02:46:11,604 ml_models 12468 12660 Error loading model: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,604 ml_models 12468 12660 Error in predict: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,604 ml_models 12468 12660 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 184, in predict
+    self.model = self._load_model()
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 82, in _load_model
+    model = xgb.XGBRegressor()
+            ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1717, in __init__
+    super().__init__(objective=objective, **kwargs)
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 673, in __init__
+    raise ImportError(
+ImportError: sklearn needs to be installed in order to use this module
+
+ERROR 2025-05-19 02:46:11,619 ml_models 12468 12660 Error making prediction: sklearn needs to be installed in order to use this module
+ERROR 2025-05-19 02:46:11,620 ml_models 12468 12660 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 263, in generate_prediction
+    base_price = float(model.predict(X)[0])
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 184, in predict
+    self.model = self._load_model()
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 82, in _load_model
+    model = xgb.XGBRegressor()
+            ^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1717, in __init__
+    super().__init__(objective=objective, **kwargs)
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 673, in __init__
+    raise ImportError(
+ImportError: sklearn needs to be installed in order to use this module
+
+ERROR 2025-05-19 02:46:11,620 views 12468 12660 Error generating prediction: Не удалось сгенерировать прогноз
+INFO 2025-05-19 02:50:08,910 ml_models 12808 15560 Starting prediction generation for request: 33
+INFO 2025-05-19 02:50:08,918 ml_models 12808 15560 Model file size: 3681655 bytes
+INFO 2025-05-19 02:50:08,920 ml_models 12808 15560 Model file content preview: b'{"learner":{"attributes":{"best_iteration":"99","best_score":"17409.753341282965"},"feature_names":['
+INFO 2025-05-19 02:50:09,240 ml_models 12808 15560 Model parameters: {'objective': 'reg:squarederror', 'base_score': None, 'booster': None, 'callbacks': None, 'colsample_bylevel': None, 'colsample_bynode': None, 'colsample_bytree': None, 'device': None, 'early_stopping_rounds': None, 'enable_categorical': False, 'eval_metric': None, 'feature_types': None, 'gamma': None, 'grow_policy': None, 'importance_type': None, 'interaction_constraints': None, 'learning_rate': None, 'max_bin': None, 'max_cat_threshold': None, 'max_cat_to_onehot': None, 'max_delta_step': None, 'max_depth': None, 'max_leaves': None, 'min_child_weight': None, 'missing': nan, 'monotone_constraints': None, 'multi_strategy': None, 'n_estimators': None, 'n_jobs': None, 'num_parallel_tree': None, 'random_state': None, 'reg_alpha': None, 'reg_lambda': None, 'sampling_method': None, 'scale_pos_weight': None, 'subsample': None, 'tree_method': None, 'validate_parameters': None, 'verbosity': None}
+INFO 2025-05-19 02:50:09,241 ml_models 12808 15560 Number of features: 2145
+ERROR 2025-05-19 02:50:10,153 ml_models 12808 15560 Error in predict: Not supported type for data.<class 'xgboost.core.DMatrix'>
+ERROR 2025-05-19 02:50:10,168 ml_models 12808 15560 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 188, in predict
+    base_prediction = self.model.predict(X)[0]
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1181, in predict
+    test = DMatrix(
+           ^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 856, in __init__
+    handle, feature_names, feature_types = dispatch_data_backend(
+                                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\data.py", line 1131, in dispatch_data_backend
+    raise TypeError("Not supported type for data." + str(type(data)))
+TypeError: Not supported type for data.<class 'xgboost.core.DMatrix'>
+
+ERROR 2025-05-19 02:50:10,170 ml_models 12808 15560 Error in model testing: Not supported type for data.<class 'xgboost.core.DMatrix'>
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 
+            Input property data:
+            ID: 33
+            Latitude: 55.793283
+            Longitude: 37.675156
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 Scaled coordinates: lat=0.7933, lon=0.6752, floor=10
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 Encoded property type: квартира -> 1.0
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 Encoded finishing: без отделки -> 0.0
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 Encoded property class 'эконом' to 1.0
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 Encoded property class: эконом -> 0.2
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 Scaled time features: month=0.08, year=0.50
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 Feature values:
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 lat: 0.7933
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 lon: 0.6752
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 floor: 0.2000
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 type: 1.0000
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 finishing: 0.0000
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 class: 0.2000
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 month: 0.0833
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 year: 0.5000
+INFO 2025-05-19 02:50:10,170 ml_models 12808 15560 Created DMatrix with shape: 1 x 8
+ERROR 2025-05-19 02:50:10,188 ml_models 12808 15560 Error in predict: Not supported type for data.<class 'xgboost.core.DMatrix'>
+ERROR 2025-05-19 02:50:10,188 ml_models 12808 15560 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 188, in predict
+    base_prediction = self.model.predict(X)[0]
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1181, in predict
+    test = DMatrix(
+           ^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 856, in __init__
+    handle, feature_names, feature_types = dispatch_data_backend(
+                                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\data.py", line 1131, in dispatch_data_backend
+    raise TypeError("Not supported type for data." + str(type(data)))
+TypeError: Not supported type for data.<class 'xgboost.core.DMatrix'>
+
+ERROR 2025-05-19 02:50:10,188 ml_models 12808 15560 Error making prediction: Not supported type for data.<class 'xgboost.core.DMatrix'>
+ERROR 2025-05-19 02:50:10,188 ml_models 12808 15560 Traceback (most recent call last):
+  File "C:\Projects\restateval\analytics\ml_models.py", line 263, in generate_prediction
+    base_price = float(model.predict(X)[0])
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\analytics\ml_models.py", line 188, in predict
+    base_prediction = self.model.predict(X)[0]
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\sklearn.py", line 1181, in predict
+    test = DMatrix(
+           ^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 729, in inner_f
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\core.py", line 856, in __init__
+    handle, feature_names, feature_types = dispatch_data_backend(
+                                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\restateval\venv\Lib\site-packages\xgboost\data.py", line 1131, in dispatch_data_backend
+    raise TypeError("Not supported type for data." + str(type(data)))
+TypeError: Not supported type for data.<class 'xgboost.core.DMatrix'>
+
+ERROR 2025-05-19 02:50:10,188 views 12808 15560 Error generating prediction: Не удалось сгенерировать прогноз
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 Starting prediction generation for request: 34
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 
+            Input property data:
+            ID: 34
+            Latitude: 55.780902
+            Longitude: 37.837205
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 Scaled coordinates: lat=0.7809, lon=0.8372
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 lat: 0.7809
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 lon: 0.8372
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 floor: 0.2000
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 type: 1.0000
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 finishing: 0.0000
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 class: 0.2000
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 month: 0.0833
+INFO 2025-05-19 02:56:43,304 ml_models 6408 9960 year: 0.5000
+INFO 2025-05-19 02:56:43,725 ml_models 6408 9960 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:56:43,728 ml_models 6408 9960 Raw prediction: 540,372.19
+INFO 2025-05-19 02:56:43,728 ml_models 6408 9960 Base price predicted: 540,372.19
+INFO 2025-05-19 02:56:43,728 ml_models 6408 9960 Adjusted price: 540,372.19
+INFO 2025-05-19 02:56:43,728 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[464373.54, 467257.01, 478016.15, 481858.05, 499116.55, 503984.25]
+INFO 2025-05-19 02:56:43,733 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[509109.41, 525558.0, 532566.81, 543795.8, 552429.51, 566741.94]
+INFO 2025-05-19 02:56:43,735 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[563647.24, 577986.09, 591460.66, 593601.44, 607542.98, 612215.56]
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 Starting prediction generation for request: 35
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 
+            Input property data:
+            ID: 35
+            Latitude: 55.770839
+            Longitude: 37.622971
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 Scaled coordinates: lat=0.7708, lon=0.6230
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 lat: 0.7708
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 lon: 0.6230
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 floor: 0.2000
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 type: 1.0000
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 finishing: 0.0000
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 class: 0.2000
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 month: 0.0833
+INFO 2025-05-19 02:56:48,932 ml_models 6408 9960 year: 0.5000
+INFO 2025-05-19 02:56:49,249 ml_models 6408 9960 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:56:49,252 ml_models 6408 9960 Raw prediction: 540,372.19
+INFO 2025-05-19 02:56:49,252 ml_models 6408 9960 Base price predicted: 540,372.19
+INFO 2025-05-19 02:56:49,252 ml_models 6408 9960 Adjusted price: 540,372.19
+INFO 2025-05-19 02:56:49,252 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[464544.2, 475551.82, 483656.37, 488003.8, 501006.86, 500746.83]
+INFO 2025-05-19 02:56:49,270 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[508421.07, 528491.93, 540212.13, 544627.78, 548597.47, 562832.13]
+INFO 2025-05-19 02:56:49,273 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[563522.95, 576085.16, 588266.16, 592897.04, 606130.46, 618385.21]
+INFO 2025-05-19 02:56:54,403 ml_models 6408 9960 Starting prediction generation for request: 36
+INFO 2025-05-19 02:56:54,403 ml_models 6408 9960 
+            Input property data:
+            ID: 36
+            Latitude: 55.725914
+            Longitude: 37.605118
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 02:56:54,403 ml_models 6408 9960 Scaled coordinates: lat=0.7259, lon=0.6051
+INFO 2025-05-19 02:56:54,403 ml_models 6408 9960 lat: 0.7259
+INFO 2025-05-19 02:56:54,411 ml_models 6408 9960 lon: 0.6051
+INFO 2025-05-19 02:56:54,411 ml_models 6408 9960 floor: 0.2000
+INFO 2025-05-19 02:56:54,412 ml_models 6408 9960 type: 1.0000
+INFO 2025-05-19 02:56:54,412 ml_models 6408 9960 finishing: 0.0000
+INFO 2025-05-19 02:56:54,413 ml_models 6408 9960 class: 0.2000
+INFO 2025-05-19 02:56:54,413 ml_models 6408 9960 month: 0.0833
+INFO 2025-05-19 02:56:54,413 ml_models 6408 9960 year: 0.5000
+INFO 2025-05-19 02:56:54,726 ml_models 6408 9960 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:56:54,728 ml_models 6408 9960 Raw prediction: 540,372.19
+INFO 2025-05-19 02:56:54,729 ml_models 6408 9960 Base price predicted: 540,372.19
+INFO 2025-05-19 02:56:54,729 ml_models 6408 9960 Adjusted price: 540,372.19
+INFO 2025-05-19 02:56:54,729 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[460818.76, 474254.7, 479536.97, 490691.42, 494374.81, 501293.22]
+INFO 2025-05-19 02:56:54,749 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[517783.48, 521205.1, 532116.74, 541764.69, 553496.51, 558306.64]
+INFO 2025-05-19 02:56:54,751 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[568324.18, 573054.4, 591441.26, 599201.84, 604325.3, 614109.91]
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 Starting prediction generation for request: 37
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 
+            Input property data:
+            ID: 37
+            Latitude: 55.756903
+            Longitude: 37.860551
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 Scaled coordinates: lat=0.7569, lon=0.8606
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 lat: 0.7569
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 lon: 0.8606
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 floor: 0.2000
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 type: 1.0000
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 finishing: 0.0000
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 class: 0.2000
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 month: 0.0833
+INFO 2025-05-19 02:58:14,345 ml_models 6408 9960 year: 0.5000
+INFO 2025-05-19 02:58:14,666 ml_models 6408 9960 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:58:14,674 ml_models 6408 9960 Raw prediction: 540,372.19
+INFO 2025-05-19 02:58:14,674 ml_models 6408 9960 Base price predicted: 540,372.19
+INFO 2025-05-19 02:58:14,674 ml_models 6408 9960 Adjusted price: 540,372.19
+INFO 2025-05-19 02:58:14,674 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[460324.37, 470582.11, 484259.77, 484209.17, 494436.06, 508572.03]
+INFO 2025-05-19 02:58:14,680 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[509368.61, 528632.21, 530580.06, 537817.48, 553352.16, 562070.5]
+INFO 2025-05-19 02:58:14,684 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[565827.5, 580738.32, 592169.63, 590343.44, 601793.57, 615888.73]
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 Starting prediction generation for request: 38
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 
+            Input property data:
+            ID: 38
+            Latitude: 55.799472
+            Longitude: 37.657303
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 Scaled coordinates: lat=0.7995, lon=0.6573
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 lat: 0.7995
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 lon: 0.6573
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 floor: 0.2000
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 type: 1.0000
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 finishing: 0.0000
+INFO 2025-05-19 02:58:17,997 ml_models 6408 9960 class: 0.2000
+INFO 2025-05-19 02:58:18,008 ml_models 6408 9960 month: 0.0833
+INFO 2025-05-19 02:58:18,008 ml_models 6408 9960 year: 0.5000
+INFO 2025-05-19 02:58:18,315 ml_models 6408 9960 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 02:58:18,315 ml_models 6408 9960 Raw prediction: 540,372.19
+INFO 2025-05-19 02:58:18,317 ml_models 6408 9960 Base price predicted: 540,372.19
+INFO 2025-05-19 02:58:18,317 ml_models 6408 9960 Adjusted price: 540,372.19
+INFO 2025-05-19 02:58:18,318 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[462227.12, 467237.87, 484111.29, 484582.52, 495543.25, 507101.11]
+INFO 2025-05-19 02:58:18,336 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[510311.73, 523161.87, 533169.69, 541573.11, 548081.28, 564867.14]
+INFO 2025-05-19 02:58:18,336 ml_models 6408 9960 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[565132.68, 578650.5, 583317.85, 593533.81, 603792.17, 616414.61]
+INFO 2025-05-19 12:57:36,479 ml_models 6408 20552 Starting prediction generation for request: 39
+INFO 2025-05-19 12:57:36,482 ml_models 6408 20552 
+            Input property data:
+            ID: 39
+            Latitude: 55.768517
+            Longitude: 37.835831
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2025-01-01
+            
+INFO 2025-05-19 12:57:36,482 ml_models 6408 20552 Scaled coordinates: lat=0.7685, lon=0.8358
+INFO 2025-05-19 12:57:36,487 ml_models 6408 20552 lat: 0.7685
+INFO 2025-05-19 12:57:36,487 ml_models 6408 20552 lon: 0.8358
+INFO 2025-05-19 12:57:36,487 ml_models 6408 20552 floor: 0.2000
+INFO 2025-05-19 12:57:36,493 ml_models 6408 20552 type: 1.0000
+INFO 2025-05-19 12:57:36,495 ml_models 6408 20552 finishing: 0.0000
+INFO 2025-05-19 12:57:36,495 ml_models 6408 20552 class: 0.2000
+INFO 2025-05-19 12:57:36,495 ml_models 6408 20552 month: 0.0833
+INFO 2025-05-19 12:57:36,495 ml_models 6408 20552 year: 0.5000
+INFO 2025-05-19 12:57:37,860 ml_models 6408 20552 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 12:57:37,872 ml_models 6408 20552 Raw prediction: 540,372.19
+INFO 2025-05-19 12:57:37,877 ml_models 6408 20552 Base price predicted: 540,372.19
+INFO 2025-05-19 12:57:37,881 ml_models 6408 20552 Adjusted price: 540,372.19
+INFO 2025-05-19 12:57:37,895 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[459235.26, 470404.59, 485881.94, 486999.95, 496938.71, 503517.07]
+INFO 2025-05-19 12:57:37,946 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[513696.61, 528555.06, 535269.52, 543245.82, 556323.69, 566818.9]
+INFO 2025-05-19 12:57:37,960 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[564003.1, 579459.93, 583077.32, 599552.94, 600365.41, 623849.25]
+INFO 2025-05-19 12:57:44,582 ml_models 6408 20552 Starting prediction generation for request: 40
+INFO 2025-05-19 12:57:44,589 ml_models 6408 20552 
+            Input property data:
+            ID: 40
+            Latitude: 55.768517
+            Longitude: 37.835831
+            Floor: 10
+            Type: квартира
+            Class: эконом
+            Finishing: без отделки
+            Purchase date: 2028-01-01
+            
+INFO 2025-05-19 12:57:44,589 ml_models 6408 20552 Scaled coordinates: lat=0.7685, lon=0.8358
+INFO 2025-05-19 12:57:44,589 ml_models 6408 20552 lat: 0.7685
+INFO 2025-05-19 12:57:44,598 ml_models 6408 20552 lon: 0.8358
+INFO 2025-05-19 12:57:44,600 ml_models 6408 20552 floor: 0.2000
+INFO 2025-05-19 12:57:44,602 ml_models 6408 20552 type: 1.0000
+INFO 2025-05-19 12:57:44,602 ml_models 6408 20552 finishing: 0.0000
+INFO 2025-05-19 12:57:44,602 ml_models 6408 20552 class: 0.2000
+INFO 2025-05-19 12:57:44,602 ml_models 6408 20552 month: 0.0833
+INFO 2025-05-19 12:57:44,602 ml_models 6408 20552 year: 0.8000
+INFO 2025-05-19 12:57:46,074 ml_models 6408 20552 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 12:57:46,084 ml_models 6408 20552 Raw prediction: 540,372.19
+INFO 2025-05-19 12:57:46,087 ml_models 6408 20552 Base price predicted: 540,372.19
+INFO 2025-05-19 12:57:46,091 ml_models 6408 20552 Adjusted price: 540,372.19
+INFO 2025-05-19 12:57:46,101 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[460994.32, 472038.17, 483345.92, 488846.45, 493871.06, 500898.0]
+INFO 2025-05-19 12:57:46,150 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[509266.7, 527430.51, 532769.75, 542267.45, 554930.89, 558106.6]
+INFO 2025-05-19 12:57:46,168 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[563478.91, 580827.05, 592163.83, 598998.39, 611939.76, 620921.49]
+INFO 2025-05-19 12:57:50,740 ml_models 6408 20552 Starting prediction generation for request: 41
+INFO 2025-05-19 12:57:50,744 ml_models 6408 20552 
+            Input property data:
+            ID: 41
+            Latitude: 55.768517
+            Longitude: 37.835831
+            Floor: 10
+            Type: квартира
+            Class: элит
+            Finishing: без отделки
+            Purchase date: 2028-01-01
+            
+INFO 2025-05-19 12:57:50,744 ml_models 6408 20552 Scaled coordinates: lat=0.7685, lon=0.8358
+INFO 2025-05-19 12:57:50,744 ml_models 6408 20552 lat: 0.7685
+INFO 2025-05-19 12:57:50,744 ml_models 6408 20552 lon: 0.8358
+INFO 2025-05-19 12:57:50,744 ml_models 6408 20552 floor: 0.2000
+INFO 2025-05-19 12:57:50,756 ml_models 6408 20552 type: 1.0000
+INFO 2025-05-19 12:57:50,762 ml_models 6408 20552 finishing: 0.0000
+INFO 2025-05-19 12:57:50,764 ml_models 6408 20552 class: 1.0000
+INFO 2025-05-19 12:57:50,764 ml_models 6408 20552 month: 0.0833
+INFO 2025-05-19 12:57:50,764 ml_models 6408 20552 year: 0.8000
+INFO 2025-05-19 12:57:52,180 ml_models 6408 20552 Model loaded from C:\Projects\restateval\analytics\models\xgboost_model.json
+INFO 2025-05-19 12:57:52,189 ml_models 6408 20552 Raw prediction: 540,372.19
+INFO 2025-05-19 12:57:52,193 ml_models 6408 20552 Base price predicted: 540,372.19
+INFO 2025-05-19 12:57:52,197 ml_models 6408 20552 Adjusted price: 540,372.19
+INFO 2025-05-19 12:57:52,206 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[458316.1, 471554.34, 482630.59, 491020.83, 493083.22, 506872.24]
+INFO 2025-05-19 12:57:52,249 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[513058.61, 520807.45, 531793.62, 545696.18, 553347.19, 566012.46]
+INFO 2025-05-19 12:57:52,261 ml_models 6408 20552 Generated price dynamics: dates=['2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10'], prices=[559446.36, 580304.06, 592555.48, 598579.36, 602527.99, 619597.29]
