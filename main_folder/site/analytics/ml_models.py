@@ -16,25 +16,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def verify_model_file(model_path):
-    """Проверка файла модели"""
-    try:
-        with open(model_path, 'rb') as f:
-            model_data = f.read()
-            logger.info(f"Model file size: {len(model_data)} bytes")
-            logger.info(f"Model file content preview: {model_data[:100]}")
-            return True
-    except Exception as e:
-        logger.error(f"Error reading model file: {str(e)}")
-        return False
-
 class MLModel:
     def __init__(self):
         self.model = None
         self.model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
                                      'models', 
                                      'xgboost_model.json')
-
+        
     def _load_model(self):
         """Загрузка модели из файла"""
         try:
@@ -42,10 +30,8 @@ class MLModel:
                 raise FileNotFoundError(f"Model file not found at {self.model_path}")
             
             if self.model is None:
-                # Используем Booster вместо XGBRegressor
                 model = xgb.Booster()
                 model.load_model(self.model_path)
-                
                 logger.info(f"Model loaded from {self.model_path}")
                 self.model = model
             
@@ -56,7 +42,7 @@ class MLModel:
             raise
 
     def prepare_features(self, property_data):
-        """Подготовка признаков для модели"""
+        """Подготовка признаков для модели без масштабирования"""
         try:
             logger.info(f"""
             Input property data:
@@ -70,52 +56,25 @@ class MLModel:
             Purchase date: {property_data.purchase_date}
             """)
             
-            features = []
-            
-            # Нормализация координат
-            try:
-                latitude = float(property_data.latitude)
-                longitude = float(property_data.longitude)
-                floor = int(property_data.floor)
-                
-                # Масштабирование координат для Москвы
-                scaled_lat = (latitude - 55.0) / (56.0 - 55.0)
-                scaled_lon = (longitude - 37.0) / (38.0 - 37.0)
-                
-                logger.info(f"Scaled coordinates: lat={scaled_lat:.4f}, lon={scaled_lon:.4f}")
-                
-            except (ValueError, TypeError) as e:
-                logger.error(f"Error processing numeric values: {str(e)}")
-                raise
-                
-            # Добавляем масштабированные координаты и этаж
-            features.extend([scaled_lat, scaled_lon, floor/50])
-            
-            # Кодируем тип помещения
-            prop_type = 1.0 if property_data.property_type.lower() == 'квартира' else 0.0
-            features.append(prop_type)
-            
-            # Кодируем тип отделки
-            finishing = 1.0 if property_data.finishing == 'С отделки' else 0.0
-            features.append(finishing)
-            
-            # Кодируем класс недвижимости
-            prop_class = self._encode_property_class(property_data.property_class)
-            features.append(prop_class)
-            
-            # Нормализация временных признаков
-            month_scaled = property_data.purchase_date.month / 12
-            year_scaled = (property_data.purchase_date.year - 2020) / 10
-            
-            features.extend([month_scaled, year_scaled])
+            # Собираем признаки без масштабирования
+            features = [
+                float(property_data.latitude),
+                float(property_data.longitude),
+                float(property_data.floor),
+                1.0 if property_data.property_type.lower() == 'квартира' else 0.0,
+                1.0 if property_data.finishing == 'С отделки' else 0.0,
+                float(self._encode_property_class(property_data.property_class)),
+                float(property_data.purchase_date.month),
+                float(property_data.purchase_date.year)
+            ]
             
             # Создаем массив признаков
             feature_array = np.array([features], dtype=np.float32)
             
             # Логируем значения признаков
-            feature_names = ['lat', 'lon', 'floor', 'type', 'finishing', 'class', 'month', 'year']
+            feature_names = ['latitude', 'longitude', 'floor', 'type', 'finishing', 'class', 'month', 'year']
             for name, value in zip(feature_names, features):
-                logger.info(f"{name}: {value:.4f}")
+                logger.info(f"{name}: {value:.1f}")
             
             return xgb.DMatrix(feature_array)
             
@@ -148,24 +107,24 @@ class MLModel:
         """Кодирование класса недвижимости"""
         try:
             mapping = {
-                'эконом': 0.2,
-                'комфорт': 0.4,
-                'комфорт+': 0.6,
-                'бизнес': 0.8,
-                'элит': 1.0
+                'эконом': 1.0,
+                'комфорт': 2.0,
+                'комфорт+': 3.0,
+                'бизнес': 4.0,
+                'элит': 5.0
             }
             
             if isinstance(property_class, (int, float)):
-                return float(property_class) / 5.0
+                return float(property_class)
                 
-            return mapping.get(str(property_class).lower(), 0.2)
+            return mapping.get(str(property_class).lower(), 1.0)
             
         except Exception as e:
             logger.error(f"Error encoding property class: {str(e)}")
-            return 0.2
-
+            return 1.0
 
 def generate_prediction(prediction_request):
+    """Генерация прогноза стоимости"""
     try:
         logger.info(f"Starting prediction generation for request: {prediction_request.id}")
         
@@ -179,21 +138,11 @@ def generate_prediction(prediction_request):
         base_price = float(model.predict(X)[0])
         logger.info(f"Base price predicted: {base_price:,.2f}")
         
-        # Корректировка на основе локации
-        location_factor = 1.0
-        if float(property_data.latitude) > 55.8:  # Север
-            location_factor = 1.1
-        elif float(property_data.latitude) < 55.7:  # Юг
-            location_factor = 0.9
-            
-        adjusted_price = base_price * location_factor
-        logger.info(f"Adjusted price: {adjusted_price:,.2f}")
-        
-        # Генерация сценариев
+        # Генерация сценариев с небольшой случайностью
         scenarios = {
-            'pessimistic': adjusted_price * 0.9,
-            'realistic': adjusted_price,
-            'optimistic': adjusted_price * 1.1
+            'pessimistic': base_price * (0.9 + np.random.uniform(-0.02, 0.02)),
+            'realistic': base_price * (1.0 + np.random.uniform(-0.01, 0.01)),
+            'optimistic': base_price * (1.1 + np.random.uniform(-0.02, 0.02))
         }
         
         # Создание результатов
@@ -213,6 +162,7 @@ def generate_prediction(prediction_request):
                 price_dynamics=_generate_price_dynamics(predicted_price)
             )
             results.append(result)
+            logger.info(f"Created {scenario_type} prediction: {predicted_price:,.2f}")
             
         return results
         
@@ -221,7 +171,6 @@ def generate_prediction(prediction_request):
         logger.error(traceback.format_exc())
         return None
 
-
 def _generate_price_dynamics(base_price):
     """Генерация динамики цен"""
     try:
@@ -229,7 +178,7 @@ def _generate_price_dynamics(base_price):
         dates = [(current_date.replace(day=1) + pd.DateOffset(months=i)).strftime('%Y-%m')
                 for i in range(6)]
         
-        # Более реалистичная динамика цен с небольшой случайностью
+        # Генерация цен с небольшой случайностью
         base_changes = [0.95, 0.97, 0.99, 1.0, 1.02, 1.04]
         price_changes = [change * (1 + np.random.uniform(-0.01, 0.01)) for change in base_changes]
         prices = [round(base_price * change, 2) for change in price_changes]
