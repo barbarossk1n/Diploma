@@ -1,0 +1,23 @@
+{
+    "cache": {
+        "mean_time": 0,
+        "median_time": 0,
+        "std_dev": 0,
+        "min_time": 0,
+        "max_time": 0,
+        "mean_memory": 0.0006510416666666666
+    },
+    "no_cache": {
+        "mean_time": 0,
+        "median_time": 0,
+        "std_dev": 0,
+        "min_time": 0,
+        "max_time": 0,
+        "mean_memory": -0.006640625
+    },
+    "analysis": {
+        "p_value": 1.0,
+        "speedup": 1.0,
+        "memory_difference": 0.007291666666666667
+    }
+}

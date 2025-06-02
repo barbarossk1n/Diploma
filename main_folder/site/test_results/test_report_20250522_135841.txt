@@ -1,0 +1,25 @@
+{
+    "cache": {
+        "mean": 0,
+        "median": 0,
+        "std_dev": 0,
+        "min": 0,
+        "max": 0,
+        "memory_usage": 0.0,
+        "all_values": []
+    },
+    "orm": {
+        "mean": 0,
+        "median": 0,
+        "std_dev": 0,
+        "min": 0,
+        "max": 0,
+        "memory_usage": 0.00013020833333333333,
+        "all_values": []
+    },
+    "analysis": {
+        "p_value": 1.0,
+        "speedup": 1.0,
+        "memory_difference": -0.00013020833333333333
+    }
+}
