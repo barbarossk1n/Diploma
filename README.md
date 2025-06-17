@@ -31,7 +31,10 @@
 │   │   ├── 💼 2.1 (WIN) setting_reestr_&_union_erz.ipynb
 │   │   ├── 📈 2.2 (WIN) setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb
 │   │   ├── 📈 2.3 (WIN) graphs_domrf_&_no_spb_lo.ipynb
-│   │   └── 📈 3.2 (WIN) 3boosts_&_gprahs.ipynb
+│   │   ├── 🔍 2.4 (WIN) models_domrf_&_no_spb_lo.ipynb
+│   │   ├── 🔍 2.5 (WIN) setting_geographic_params.ipynb
+│   │   ├── 📈 3.2 (WIN) 3boosts_&_gprahs.ipynb
+│   │   └── 📈 3.3 (WIN) XGBoost_&_overfitting-analysis_&_graphs.ipynb
 │   ├── 📁 site
 │   ├── 📁 source  
 │   │   └── 📋 parameters_erz_parsing.py
@@ -68,7 +71,10 @@
     - 💼 [2.1 (WIN) setting_reestr_&_union_erz.ipynb](main_folder/notebooks/2.1_(WIN)_setting_reestr_&_union_erz.ipynb) — Скрипт по обработке данных ЕГРН и их объединения с ЕРЗ
     - 📈 [2.2 (WIN) setting_reestr_&-errors_graphs-&_no_spb_lo.ipynb](main_folder/notebooks/2.2_(WIN)_setting_reestr_&_errors_graphs_&_no_spb_lo.ipynb) — Скрипт по обработке данных ЕГРН, подсчёте обнаруженных ошибках и выведении их распределения в графиках
     - 📈 [2.3 (WIN) graphs_domrf_&_no_spb_lo.ipynb](main_folder/notebooks/2.3_(WIN)_graphs_domrf_&_no_spb_lo.ipynb) — Скрипт по построению графиков для текста ВКРС — график основных ошибок, распределения цены и частоты публикации деклараций
+    - 🔍 [2.4 (WIN) models_domrf_&_no_spb_lo.ipynb](main_folder/notebooks/2.4_(WIN)_models_domrf_&_no_spb_lo.ipynb) - Скрипт запуска моделей на данных Дом.РФ
+    - 🔍 [2.5 (WIN) setting_geographic_params.ipynb](main_folder/notebooks/2.5_(WIN)_setting_geographic_params.ipynb) - Скрипт создания географических переменных
     - 📈 [3.2 (WIN) 3boosts_&_gprahs.ipynb](main_folder/notebooks/3.2_(WIN)_3boosts_&_graphs.ipynb) — Скрипт обучает по наилучшим гиперпараметрам бустинги и визуализирует результаты на датасете
+    - 📈 [3.3 (WIN) XGBoost_&_overfitting-analysis_&_graphs.ipynb](main_folder/notebooks/3.3_(WIN)_XGBoost_&_overfitting-analysis_&_graphs.ipynb) - Скрипт анализа переобучения
 
   * 📁 [site](main_folder/site) - Код сайта  
 
